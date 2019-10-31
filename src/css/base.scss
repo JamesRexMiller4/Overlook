@@ -1,6 +1,84 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+*,
+*:after,
+*:before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+header {
+  width: inherit;
+  height: 20vh;
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+
+  h1 {
+    font-family: 'Julius Sans One', sans-serif;
+    color: hsla(360, 100%, 100%, 1);
+    font-size: 4em;
+    padding: 10px;
+    line-height: 2em;
+  }
+}
+
+h2 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 2em;
+  margin-left: 10px;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 100px;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+form {
+  width: 275px;
+  height: 250px;
+  border: 2px solid black;
+  background-color: whitesmoke;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-flow: column;
+
+  label {
+    font-size: 1.5em;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    display: block;
+    margin-left: 20px;
+    justify-content: left;
+  }
+
+  p {
+    color: gray;
+    font-size: .7em;
+    padding-left: 20px;
+  }
+
+}
+
+input {
+  border: 2px solid black;
+  margin-left: 20px;
+  padding: 10px;
+  width: 20em;
+  height: 30px;
+  display: block;
+  justify-content: center;
+  text-align: left;
+}
 
 body {
-  background-color: $primary-background;
+  width: inherit;
+  height: 100%;
+  background-image: url(../images/beach-hotel.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
