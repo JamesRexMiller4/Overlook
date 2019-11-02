@@ -5,31 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie-edge">
-  <title>O Hotel</title>
+  <title>DEATHSTAR Hotel</title>
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Rajdhani:400,500,600,700&display=swap" rel="stylesheet">
-
-
-
 </head>
-
 <body>
   <header> 
-    <h1>OverLook Hotel</h1>
+    <h1>DEATHSTAR Hotel</h1>
   </header>
-  <main>
-    <section>
+  <main data-router-wrapper>
+    <section data-router-view="home" class="home">
       <form>
         <h2 class='form-login-h2'>Login</h2>
         <label for='username'>Username</label>
-        <input id='username' aria-placeholder='customer42' placeholder='customer42' autocomplete='off' aria-autocomplete='none'>
-        <p>Username must include your customer id</p>
+        <input id='username' class='input-username login' aria-placeholder='customer42' placeholder='customer42' autocomplete='off' aria-autocomplete='none'>
+        <p class="p-hint-login">Username must include your customer id</p>
         <label for='password'>Password</label> 
-        <input type='password' placeholder='overlook2019' aria-placeholder='overlook2019' autocomplete='off' aria-autocomplete='none'>
-        <p>Passwords can contain letters and numbers only</p>
-        <input type="submit" class='submit btn'>
+        <input type='password' id='password' class='input-password login' placeholder='overlook2019' aria-placeholder='overlook2019' autocomplete='off' aria-autocomplete='none'>
+        <p class="p-hint-login">Passwords can contain letters and numbers only</p>
+        <input type="submit" class='submit-login-btn'>
       </form>
     </section>
   </main>
+<footer></footer>
 </body>
-
 </html>
