@@ -1,6 +1,7 @@
 class Hotel {
-  constructor(dateObj, rooms, bookings) {
+  constructor(dateObj, users, rooms, bookings) {
     this.date = dateObj;
+    this.users = users;
     this.rooms = rooms;
     this.bookings = bookings;
   }
@@ -10,6 +11,10 @@ class Hotel {
     let month = this.date.getMonth() + 1
     let day = String(this.date.getDate()).padStart(2, '0')
     this.date = `${year}/${month}/${day}`
+  }
+
+  findCurrentUser(id) {
+    return this.users.find(user => user.id === id)
   }
 
 }
