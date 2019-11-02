@@ -1,6 +1,7 @@
 class User {
-  constructor(id = manager) {
+  constructor(id = 'manager', username = "Supreme Manager Fluffykins") {
     this.id = id
+    this.username = username
   }
 
   findCustomerBookingHistory(bookings) {
