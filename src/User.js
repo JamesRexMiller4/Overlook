@@ -1,7 +1,6 @@
 class User {
-  constructor(id, username) {
+  constructor(id = manager) {
     this.id = id
-    this.username = username
   }
 
   findCustomerBookingHistory(bookings) {
@@ -17,6 +16,10 @@ class User {
       })
       return acc
     }, 0)
+  }
+
+  addRoomServiceCharge() {
+    
   }
   
   
