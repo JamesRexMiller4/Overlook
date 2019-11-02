@@ -40,7 +40,4 @@ describe('User', () => {
     expect(user.findCustomerSpendingHistory(bookings, rooms)).to.equal(764.09)
   })
 
-
-
-
 })

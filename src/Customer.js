@@ -4,6 +4,14 @@ class Customer extends User {
     super(id)
   }
 
+  addRoomServiceCharge() {
+    
+  }
+
+  bookARoom(roomsbyDate){
+    
+  }
+
 
 
 }
