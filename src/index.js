@@ -9,7 +9,7 @@ import './css/base.scss';
 import './css/customer.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
+import './images/residential-suite.jpg';
 
 let user
 let customer
@@ -58,9 +58,6 @@ $('.submit-login-btn').on('click', function(e) {
   }
 });
 
-
-// DOM Manipulation 
-
 $('#filter-submit-btn').on('click', function(e) {
   event.preventDefault()
   let date = grabDate()
@@ -69,7 +66,11 @@ $('#filter-submit-btn').on('click', function(e) {
   console.log(hotel.findRoomsAvailableByDate(date))
   console.log(hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date)))
   console.log(hotel.filterRoomsByFeatures(features, hotel.findRoomsAvailableByDate(date)))
+  generateResults(hotel.filterRoomsByFeatures(features, hotel.findRoomsAvailableByDate(date)));
 })
+
+// DOM Manipulation 
+
 
 function grabFilterMenuValues() {
   let range = [];
@@ -118,4 +119,64 @@ function grabFeatures() {
 
 function setDatePicker() {
   $('#date-picker').val(hotel.date.split('/').join('-'))
+}
+
+
+function generateResults(arrayOfRooms) {
+  // conditional to check for children and to clear out if true
+  arrayOfRooms.forEach(obj => {
+    $('.display-results-section').append(`
+    <div class="search-results-card">
+    <div class='card-header-div'>
+        <h3 class="roomnum-card-h3">Room Num: ${obj.number}</h3>
+        <h3 class="roomtype-card-h3">Room Type: ${obj.roomType}</h3>
+    </div>
+    <div class="room-image-div">
+        <img class="room-image-pic"src="./images/residential-suite.jpg">
+    </div>
+    <div class='details-card-div'>
+        <ul class='details-ul'>
+            <li class='details-li'>
+                    <label>Bed Type</label>
+                    <p id="bedType-details-p" class='details-li-p'>${obj.bedSize}</p>
+            </li>
+            <li class='details-li'>
+                    <label>Number of Beds</label>
+                    <p id="numBeds-details-p" class='details-li-p'>${obj.numBeds}</p>
+            </li>
+            <li class='details-li'>
+                    <label>Bidet</label>
+                    <p id="bidet-details-p" class='details-li-p'>${obj.bidet}</p>
+            </li>
+        </ul>
+    </div>
+    <div class='details-cost-per-night-div'>
+        <h3>Cost Per Night</h3>
+        <p class='details-cost-per-night-p'>${obj.costPerNight}</p>
+    </div>
+    <div class='details-btn-div'>
+        <label for='customer-book-btn'>BOOK</label>
+        <input type="submit" id='customer-book-btn' class='btn'>
+    </div>
+</div>
+    `)
+
+
+  })
+}
+
+
+function generateBookingHistory(arrayOfBookings) {
+
+  arrayOfBookings.forEach(obj => {
+    $('.customer-booking-history-div').append(`
+  <div class="search-results-card">
+  <div class='history-room-card-div'>
+      <h3 class="history-roomnum-card-h3">Room Num: ${obj.roomNumber}</h3>
+  </div>
+  <div class='history-date-card-div'>
+      <h3 class='history-date-card-h3'>${obj.date}</h3>
+  </div>
+  `
+    )})
 }

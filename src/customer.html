@@ -13,60 +13,75 @@
         <h1>DEATHSTAR Hotel</h1>
     </header>
     <main class='customer-main'>
-        <section class='section-customer-main'>
-            <aside class="aside-filter-menu">
-                <form>
-                    <ul class="aside-menu-ul">
-                        <li>
-                            <label>Select Date</label>
-                            <input type="date" id='date-picker' required pattern="\d{4}-\d{2}-\d{2}">
-                        </li>
-                        <li>
-                            <label>Select Features</label>
-                            <div class='div-checkbox'>
-                                <input type="checkbox" id="bidet" class="filter-checkbox" value="Bidet">
-                                <label for='bidet' class='filter-label'>Bidet</label>
-                            </div>
-                        </li>
-                        <li>
-                            <label>Room Type</label>
-                            <select id='roomtype' class='select-roomtype-dropdown'>
-                                <option value=""></option>
-                                <option value="single room">Single Room</option>
-                                <option value="junior suite">Junior Suite</option>
-                                <option value="suite">Suite</option>
-                                <option value="residential suite">Residential Suite</option>
-                            </select>
-                        </li>
-                        <li>
-                            <label>Bed Size</label>
-                            <select id='beds' class='select-bed-dropdown'>
-                                <option value=""></option>
-                                <option value="twin">Twin</option>
-                                <option value="full">Full</option>
-                                <option value="queen">Queen</option>
-                                <option value="king">King</option>
-                            </select>
-                        </li>
-                        <li>
-                            <label>Number of Beds</label>
-                            <input type="number" id="num-beds" max="2" min='1' value='1' class='input-num-beds'>
-                        </li>
-                        <li>
-                            <label>Price Range</label>
-                            <label for="min-price">Min Price</label>
-                            <input type="number" id="min-price" min='100' max="500" value="100">
-                            <label for='max-price'>Max Price</label>
-                            <input type="number" id='max-price' min="100" max="500" value="500">
-                        </li>
-                        <li>
-                            <input type="submit" id="filter-submit-btn">
-                        </li>
-                    </ul>
-                </form>
-            </aside>
+      <section class='section-customer-main'>
+        <div class="aside-filter-menu">
+          <form>
+            <ul class="aside-menu-ul">
+              <li>
+                <label>Select Date</label>
+                <input type="date" id='date-picker' required pattern="\d{4}-\d{2}-\d{2}">
+              </li>
+              <li>
+                <label>Select Features</label>
+                <div class='div-checkbox'>
+                    <input type="checkbox" id="bidet" class="filter-checkbox" value="Bidet">
+                    <label for='bidet' class='filter-label'>Bidet</label>
+                </div>
+              </li>
+              <li>
+                <label>Room Type</label>
+                <select id='roomtype' class='select-roomtype-dropdown'>
+                    <option value=""></option>
+                    <option value="single room">Single Room</option>
+                    <option value="junior suite">Junior Suite</option>
+                    <option value="suite">Suite</option>
+                    <option value="residential suite">Residential Suite</option>
+                </select>
+              </li>
+              <li>
+                <label>Bed Size</label>
+                <select id='beds' class='select-bed-dropdown'>
+                    <option value=""></option>
+                    <option value="twin">Twin</option>
+                    <option value="full">Full</option>
+                    <option value="queen">Queen</option>
+                    <option value="king">King</option>
+                </select>
+              </li>
+              <li>
+                <label>Number of Beds</label>
+                <input type="number" id="num-beds" max="2" min='1' value='1' class='input-num-beds'>
+              </li>
+              <li>
+                <label>Price Range</label>
+                <label for="min-price">Min Price</label>
+                <input type="number" id="min-price" min='100' max="500" value="100">
+                <label for='max-price'>Max Price</label>
+                <input type="number" id='max-price' min="100" max="500" value="500">
+              </li>
+              <li>
+                <input type="submit" id="filter-submit-btn">
+            </li>
+        </ul>
+        </form>
+    </div>
             <section class="display-results-section">
-                <h2>HELLO</h2>
+            </section>
+            <section class="right-history-aside">
+                <div class='customer-booking-history-div'>
+                    <h2>Booking History</h2>
+                    <div id='booking-history-div' class='booking-history-results-div'>
+                            <div class="search-results-card">
+                                <div class='history-room-card-div'>
+                                    <h3 class="history-roomnum-card-h3">Room Num: 4</h3>
+                                </div>
+                                <div class='history-date-card-div'>
+                                    <h3 class='history-date-card-h3'>2019/09/03</h3>
+                            </div>
+                    </div>
+                </div>
+                <div class='customer-spending-history-div'>
+                </div>
             </section>
         </section>
     </main>
