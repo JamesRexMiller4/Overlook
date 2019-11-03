@@ -10,6 +10,7 @@ import './css/customer.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/residential-suite.jpg';
+import './images/fluffykins.jpg';
 
 let user
 let customer
@@ -33,24 +34,23 @@ Promise.all([
   hotel = new Hotel(new Date(), data[0].users, data[1].rooms, data[2].bookings)
   hotel.getTodaysDate()
   setDatePicker()
+  if(document.location.pathname ===  "/customer.html") {
+  welcomeLoyalCustomer();
+  generateBookingHistory(customer.findCustomerBookingHistory(hotel.bookings))
+  generateSpendingHistory(hotel.bookings, hotel.rooms)
+  } else if (document.location.pathname ===  "/manager.html") {
+    welcomeSupremeManagerFluffykins();
+    displayKPIs();
+  }
 }).then(() => {
   // updateDOM();
   // updateCharts();
 })
 
-function loadHotel() {
-  setTimeout(function() {
-    console.log(hotel)
-    console.log(hotel.findRoomsAvailableByDate())
-  }, 5000)
-}
-
-loadHotel()
-
 // EVENT LISTENERS
-$('.submit-login-btn').on('click', function(e) {
+$('.submit-login-btn').on('click', function() {
   event.preventDefault();
-  console.log('HELLO WORLD')
+  storeIDLocalStorage()
   if ($('#username').val() === 'manager' && $('#password').val() === 'overlook2019') {
     window.location = "./manager.html";
   } else if ($('#username').val().includes('customer') && $('#password').val() === 'overlook2019') {
@@ -58,7 +58,7 @@ $('.submit-login-btn').on('click', function(e) {
   }
 });
 
-$('#filter-submit-btn').on('click', function(e) {
+$('#filter-submit-btn').on('click', function() {
   event.preventDefault()
   let date = grabDate()
   let price = grabFilterMenuValues()
@@ -69,7 +69,7 @@ $('#filter-submit-btn').on('click', function(e) {
   generateResults(hotel.filterRoomsByFeatures(features, hotel.findRoomsAvailableByDate(date)));
 })
 
-// DOM Manipulation 
+// Customer DOM Manipulation 
 
 
 function grabFilterMenuValues() {
@@ -123,7 +123,10 @@ function setDatePicker() {
 
 
 function generateResults(arrayOfRooms) {
-  // conditional to check for children and to clear out if true
+  $('.display-results-section').html('')
+  if (arrayOfRooms.length < 1) {
+    alert('So sorry we have no available rooms that meet that search criteria, please try again')
+  }
   arrayOfRooms.forEach(obj => {
     $('.display-results-section').append(`
     <div class="search-results-card">
@@ -167,10 +170,10 @@ function generateResults(arrayOfRooms) {
 
 
 function generateBookingHistory(arrayOfBookings) {
-
+  arrayOfBookings.sort((a, b) => b.date - a.date)
   arrayOfBookings.forEach(obj => {
     $('.customer-booking-history-div').append(`
-  <div class="search-results-card">
+  <div class="history-results-card">
   <div class='history-room-card-div'>
       <h3 class="history-roomnum-card-h3">Room Num: ${obj.roomNumber}</h3>
   </div>
@@ -180,3 +183,53 @@ function generateBookingHistory(arrayOfBookings) {
   `
     )})
 }
+
+function generateSpendingHistory(bookings, rooms) {
+  let total = customer.findCustomerSpendingHistory(bookings, rooms)
+  $('#customer-spending-history-p').text(total)
+}
+
+
+function welcomeLoyalCustomer() {
+  let customerID = parseInt(window.localStorage.getItem('id'));
+  customer = new Customer(customerID)
+  let customerProfile = hotel.findCurrentUser(customerID)
+  $('.customer-greeting-message-h1').text(`Welcome ${customerProfile.name}!`)
+
+}
+
+function storeIDLocalStorage() {
+ let arr =  $('#username').val().split('r')
+ let customerID = arr[1]
+ window.localStorage.setItem('id', customerID)
+}
+
+
+// MANAGER DOM 
+
+function welcomeSupremeManagerFluffykins() {
+  manager = new Manager()
+}
+
+
+function displayKPIs() {
+  generateTodaysRevenue()
+  generateOccupancyPercent()
+  generateTotalRooms()
+}
+
+function generateTodaysRevenue() {
+  let revenue = manager.findTotalRevenueForToday(hotel.bookings, hotel.rooms, hotel.date)
+  $('#manager-revenue-p').text('$' + revenue)
+}
+
+function generateOccupancyPercent() {
+  let percentOccupied = manager.findPercentageOfRoomsOccupiedForToday(hotel.bookings, hotel.rooms, hotel.date)
+  $('#manager-capacity-p').text(percentOccupied + '%')
+}
+
+function generateTotalRooms() {
+  let totalOpenRooms = hotel.findRoomsAvailableByDate().length
+  $('#manager-total-open-rooms-p').text(totalOpenRooms)
+}
+
