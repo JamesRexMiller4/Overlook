@@ -111,7 +111,7 @@ body {
   width: inherit;
   height: 900px;
   // background-color: black;
-  // background-image: url(../images/deathstartravel.gif);
+  background-image: url(../images/deathstartravel.gif);
   // background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
   background-size: cover;
   background-repeat: no-repeat;
@@ -239,6 +239,10 @@ select {
   height: 700px;
   border: 2px solid red;
   background-color: cadetblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly
+
 }
 
 
@@ -300,5 +304,146 @@ select {
 
 .customer-booking-history-div {
   width: 90%;
+  display: flex;
+  overflow: scroll;
 
+}
+.booking-history-results-div {
+  display: flex;
+  height: 100px;
+  flex-direction: row;
+  overflow: scroll;
+}
+
+.history-results-card {
+  height: 120px;
+  background-color: grey;
+  margin: 5px;
+  border: 10px solid;
+  border-color: lightblue;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.spending-total-p {
+  font-size: 2em;
+  color: black;
+}
+
+
+
+// Manager Styles 
+
+.manager-body{
+  margin: 0 auto;
+}
+
+.manager-main {
+  margin: 0 auto;
+}
+
+.manager-header-div {
+  padding: 20px;
+  background-color: black;
+  height: 130px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.manager-greeting-h2 {
+  color: whitesmoke;
+}
+
+.manager-profile-pic {
+  width: 100px;
+  height: 100px;
+  border: 5px solid slateblue;
+  border-radius: 50%;
+  margin: -10px;
+}
+
+.manager-dashboard {
+  margin: 0 auto;
+  background-color: #2a5298;
+  display: grid;
+  grid-template-columns: 5fr;
+  grid-template-areas: 
+  'top'
+  'bottom';
+}
+
+
+.todays-numbers-section {
+  margin-top: -8px;
+  grid-area: top;
+  height: 200px;
+  border: 10px solid slateblue;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.manager-duties-section {
+  grid-area: bottom;
+  border: 2px solid red;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+  'header header'
+  'make-booking delete-booking'
+}
+
+.manage-bookings-h2 {
+  display: inline-block;
+}
+
+.duties-header-section {
+  grid-area: header;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: flex-end;
+  border-bottom: 10px solid black;
+}
+.bookings-container-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: space-between;
+  align-content: space-between;
+  align-self: center;
+}
+  
+
+.manager-kpi-div {
+  border-right: 1px solid black;
+  border-left: 1px solid black; 
+  width: 40%;
+  height: 100%;
+  background-color: slateblue;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.manager-p {
+  font-size: 2.5em;
+  color: black;
+}
+
+.select-booking-duty-a {
+
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+
+}
+
+.select-booking-duty-a:hover {
+  color: white;
 }
