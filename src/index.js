@@ -6,6 +6,7 @@ import Hotel from './Hotel';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+import './css/customer.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
@@ -29,18 +30,40 @@ Promise.all([
     .then(data => data.bookingsData)
     .catch(error => console.error('NO DATA')),
 ]).then(data => {
-  hotel = new Hotel(new Date(), userData, roomsData, bookingsData)
+
+  hotel = new Hotel(new Date(), data[0], data[1], data[2])
 }).then(() => {
-  updateDOM();
-  updateCharts();
+  // updateDOM();
+  // updateCharts();
 })
 
 
 // EVENT LISTENERS
-$('.submit').on('click', function() {
+$('.submit-login-btn').on('click', function(e) {
+  event.preventDefault();
+  console.log('HELLO WORLD')
   if ($('#username').val() === 'manager' && $('#password').val() === 'overlook2019') {
-    window.location = "./manager-deck.html";
-  } else if ($('#username').val().contains('customer') && $('#password').val() === 'overlook2019') {
-    window.location = "./user-deck.html";
+    window.location = "./manager.html";
+  } else if ($('#username').val().includes('customer') && $('#password').val() === 'overlook2019') {
+    window.location = "./customer.html";
   }
 });
+
+
+// DOM Manipulation 
+
+$('#filter-submit-btn').on('click', function(e) {
+  
+})
+
+function grabFilterMenuValues() {
+  let range = [];
+  let min = $('#min-price').val()
+  let max = $('#max-price').val()
+  range.push(min)
+  range.push(max)
+
+  
+
+
+}
