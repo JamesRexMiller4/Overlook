@@ -6,18 +6,42 @@
   box-sizing: border-box;
 }
 
+// Main Elements
+
+html {
+  margin: 0 auto;
+  height: 100%;
+}
+
+body {
+  width: inherit;
+  background-image: url(../images/deathstartravel.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 header {
   width: inherit;
   height: 20vh;
   background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
 
-  h1 {
-    font-family: 'Julius Sans One', sans-serif;
-    color: goldenrod;
-    font-size: 4em;
-    padding: 10px;
-    line-height: 2em;
-  }
+label {
+  font-size: 1.5em;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+  display: block;
+  margin-left: 20px;
+  justify-content: left;
+}
+
+
+h1 {
+  font-family: 'Julius Sans One', sans-serif;
+  color: goldenrod;
+  font-size: 4em;
+  padding: 10px;
+  line-height: 2em;
 }
 
 h2 {
@@ -29,7 +53,6 @@ h2 {
 
 section {
   width: 100%;
-  // height: 100%;
   display: flex;
   margin-top: 100px;
   justify-content: center;
@@ -46,38 +69,6 @@ form {
   flex-flow: column;
 }
 
-
-
-.form-login-h2 {
-  font-size: 3em;
-  justify-content: center;
-  text-align: center;
-}
-
-
-.login {
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.form-login-h2 {
-  font-size: 3em;
-  justify-content: center;
-  text-align: center;
-}
-
-.submit-login-btn {
-  width: 80%;
-  background-color:goldenrod;
-  color: black;
-  border-radius: 5px;
-  text-align: center;
-  font-size:1em;
-  padding: 15px;
-}
-
-
 p {
   color: gray;
   font-size: .7em;
@@ -86,36 +77,57 @@ p {
 }
 
 
-label {
-  font-size: 1.5em;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 500;
-  display: block;
-  margin-left: 20px;
-  justify-content: left;
+// Login Page Styles
+
+.hotel-logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
 
+.form-login-h2 {
+  font-size: 3em;
+  justify-content: center;
+  text-align: center;
+}
 
-input {
+.form-login {
+  width: 275px;
+  height: 300px;
+  border: 2px solid black;
+  background-color: whitesmoke;
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 20px;
+}
+
+.login {
   border: 2px solid black;
   margin-left: 20px;
   padding: 10px;
   width: 20em;
   height: 30px;
   display: block;
-  justify-content: center;
   text-align: left;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-body {
-  width: inherit;
-  height: 900px;
-  // background-color: black;
-  background-image: url(../images/deathstartravel.gif);
-  // background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-  background-size: cover;
-  background-repeat: no-repeat;
+.submit-login-btn {
+  width: 80%;
+  background-color: goldenrod;
+  border: 2px solid black;
+  color: black;
+  border-radius: 5px;
+  font-size: 1.5em;
+  padding: 5px;
+  margin-left: 20px;
 }
+
+
+
+
 
 .p-hint-login {
   margin-bottom: 20px;
@@ -134,17 +146,10 @@ body .customer-body {
 
 .customer-main {
   width: 100%;
-  // height: 900px;
   margin: 0 auto;
   // background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
   // background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
   background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-  // display: grid;
-  // grid-template-columns: 1fr, 2fr, 1fr;
-  // grid-template-rows: 2fr;
-  // grid-template-areas: 'left-aside-menu', 'results-body', 'right-aside-history'
-  // margin-bottom: 100px;
-
 }
 
 .section-customer-main {
@@ -156,41 +161,48 @@ body .customer-body {
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  grid-template-areas: 
-  'left middle middle right'
-  'left middle middle right'
-  'left middle middle right';
+  grid-template-areas:
+    'left middle middle right'
+    'left middle middle right'
+    'left middle middle right';
 
 }
+
 .aside-filter-menu {
   margin: 0 auto;
   height: 600px;
 }
-    form {
-      height: 600px;
-      display: flex;
-  
-    }
-  .aside-menu-ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: space-around;
-  }
-  li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: space-around;
 
-  }
-  .filter-label {
-    display: inline;
-  }
-  .filter-checkbox {
-    display: inline;
-  }
+.login-form {
+  height: 300px;
+
+}
+
+.submit-login-btn {}
+
+.aside-menu-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: space-around;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: space-around;
+
+}
+
+.filter-label {
+  display: inline;
+}
+
+.filter-checkbox {
+  display: inline;
+}
 
 
 
@@ -228,10 +240,10 @@ select {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: 
-  'header header'
-  'image-left details-right'
-  'price-left book-right'
+  grid-template-areas:
+    'header header'
+    'image-left details-right'
+    'price-left book-right'
 }
 
 .right-history-aside {
@@ -242,7 +254,6 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly
-
 }
 
 
@@ -308,6 +319,7 @@ select {
   overflow: scroll;
 
 }
+
 .booking-history-results-div {
   display: flex;
   height: 100px;
@@ -335,7 +347,7 @@ select {
 
 // Manager Styles 
 
-.manager-body{
+.manager-body {
   margin: 0 auto;
 }
 
@@ -368,9 +380,9 @@ select {
   background-color: #2a5298;
   display: grid;
   grid-template-columns: 5fr;
-  grid-template-areas: 
-  'top'
-  'bottom';
+  grid-template-areas:
+    'top'
+    'bottom';
 }
 
 
@@ -391,9 +403,9 @@ select {
   display: grid;
   grid-template-columns: 2fr 2fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: 
-  'header header'
-  'make-booking delete-booking'
+  grid-template-areas:
+    'header header'
+    'make-booking delete-booking'
 }
 
 .manage-bookings-h2 {
@@ -407,6 +419,7 @@ select {
   align-content: flex-end;
   border-bottom: 10px solid black;
 }
+
 .bookings-container-div {
   display: flex;
   flex-direction: row;
@@ -415,11 +428,11 @@ select {
   align-content: space-between;
   align-self: center;
 }
-  
+
 
 .manager-kpi-div {
   border-right: 1px solid black;
-  border-left: 1px solid black; 
+  border-left: 1px solid black;
   width: 40%;
   height: 100%;
   background-color: slateblue;

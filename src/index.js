@@ -11,6 +11,7 @@ import './css/customer.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/residential-suite.jpg';
 import './images/fluffykins.jpg';
+import './images/deathstar.gif';
 
 let user
 let customer
