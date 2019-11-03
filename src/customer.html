@@ -19,7 +19,7 @@
                     <ul class="aside-menu-ul">
                         <li>
                             <label>Select Date</label>
-                            <input type="date" id='date-picker'>
+                            <input type="date" id='date-picker' required pattern="\d{4}-\d{2}-\d{2}">
                         </li>
                         <li>
                             <label>Select Features</label>
@@ -31,15 +31,17 @@
                         <li>
                             <label>Room Type</label>
                             <select id='roomtype' class='select-roomtype-dropdown'>
-                                <option value="single rooom">Single Room</option>
+                                <option value=""></option>
+                                <option value="single room">Single Room</option>
                                 <option value="junior suite">Junior Suite</option>
                                 <option value="suite">Suite</option>
                                 <option value="residential suite">Residential Suite</option>
                             </select>
                         </li>
                         <li>
-                            <label>Bed Type</label>
+                            <label>Bed Size</label>
                             <select id='beds' class='select-bed-dropdown'>
+                                <option value=""></option>
                                 <option value="twin">Twin</option>
                                 <option value="full">Full</option>
                                 <option value="queen">Queen</option>
@@ -48,7 +50,7 @@
                         </li>
                         <li>
                             <label>Number of Beds</label>
-                            <input type="number" max="2" min='1' value='1' class='input-num-beds'>
+                            <input type="number" id="num-beds" max="2" min='1' value='1' class='input-num-beds'>
                         </li>
                         <li>
                             <label>Price Range</label>
