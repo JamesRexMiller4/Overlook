@@ -6,7 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-    
+<body class='manager-body'>
+  <header> 
+    <h1>DEATHSTAR Hotel</h1>
+  </header>
+    <main class='manager-main'>
+        <div class='manager-header-div'>
+        <h2 class='manager-greeting-h2'>Hello Supreme Manager Fluffkins!</h2>
+        <img src='./images/fluffykins.jpg' class='manager-profile-pic'>
+        </div>
+        <section class='manager-dashboard'>
+            <section class='todays-numbers-section'>
+                <div class='manager-kpi-div'>
+                    <h2>Total Revenue</h2>
+                    <p id='manager-revenue-p' class='manager-p'></p>
+                </div>
+                <div class='manager-kpi-div'>
+                    <h2>Hotel Capacity</h2>
+                    <p id='manager-capacity-p' class='manager-p'></p>
+                </div>
+                <div class='manager-kpi-div'>
+                    <h2>Total Rooms Available</h2>
+                    <p id='manager-total-open-rooms-p' class='manager-p'></p>
+                </div>
+            </section>
+            <section class='manager-duties-section'>
+                <div class='duties-header-section'>
+                    <h2 class='manage-bookings-h2'>Manage Bookings</h2>
+                    <label for='customer-id-search'>Search for Customer</label>
+                    <input type="text" id='customer-id-search'>
+                </div>
+                <div class='bookings-container-div'>
+                    <section class='make-booking-section'>
+                        <a href='#' id='make-booking-link' class='select-booking-duty-a'>Make a Booking</a>
+                    </section>
+                    <section class='delete-booking-section'>
+                        <a href='#' id='delete-booking-link' class='select-booking-duty-a'>Delete a Booking</a>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </main>
 </body>
 </html>
