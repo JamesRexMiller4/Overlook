@@ -17,7 +17,7 @@
     return this.users.find(user => user.id === id)
   }
 
-  findRoomsAvailableByDate(date, rooms, bookings) {
+  findRoomsAvailableByDate(date = this.date, rooms = this.rooms, bookings = this.bookings) {
     let roomsBooked = bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber)
     let roomsAvailable = rooms.filter(room => {
       if (!roomsBooked.includes(room.number)) {
