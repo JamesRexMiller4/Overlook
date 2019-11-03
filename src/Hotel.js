@@ -1,4 +1,4 @@
-class Hotel {
+  class Hotel {
   constructor(dateObj, users, rooms, bookings) {
     this.date = dateObj;
     this.users = users;
