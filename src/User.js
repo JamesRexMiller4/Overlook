@@ -4,8 +4,8 @@ class User {
     this.username = username
   }
 
-  findCustomerBookingHistory(bookings) {
-    return bookings.filter(bookings => bookings.userID === this.id)
+  findCustomerBookingHistory(bookings, id = this.id) {
+    return bookings.filter(bookings => bookings.userID === id)
   }
 
   findCustomerSpendingHistory(bookings, rooms) {

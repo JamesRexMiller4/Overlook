@@ -4,11 +4,6 @@ class Manager extends User {
     super(id, username)
   }
 
-
-  findCustomerBookingHistory(bookings, id) {
-    return bookings.filter(bookings => bookings.userID === id)
-  }
-
   findTotalRevenueForToday(bookings, rooms, currentDate) {
     let revenues = bookings.filter(booking => booking.date === currentDate)
       .reduce((acc, roomBooked) => {

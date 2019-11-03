@@ -17,8 +17,24 @@ describe('User', () => {
     expect(user.username).to.equal('James Rex')
   });
 
-  it('should be able find the booking history for a particular customer', () => {
+  it('should be able find the booking history for a particular customer with/without id passed through', () => {
     expect(user.findCustomerBookingHistory(bookings)).to.eql([
+      {
+        id: 1572293130161,
+        userID: 4,
+        date: '2019/11/14',
+        roomNumber: 13,
+        roomServiceCharges: []
+      },
+      {
+        id: 1572293130162,
+        userID: 4,
+        date: '2019/11/04',
+        roomNumber: 5,
+        roomServiceCharges: []
+      }
+    ])
+    expect(user.findCustomerBookingHistory(bookings, 4)).to.eql([
       {
         id: 1572293130161,
         userID: 4,
