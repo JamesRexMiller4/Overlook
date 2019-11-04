@@ -70,7 +70,10 @@ $('#filter-submit-btn').on('click', function() {
 
 $('#display-results-parent').on('click', function(e) {
   event.preventDefault()
-  console.log($('event.target').closest('.search-results-card'))
+  let eventObj = $(event.target.closest('.search-results-card'))
+  let roomDetails = eventObj["0"].dataset.num
+  let date = grabDate()
+  customer.bookARoom(date, roomDetails)
 })
 
 
@@ -132,7 +135,7 @@ function generateResults(arrayOfRooms) {
   }
   arrayOfRooms.forEach(obj => {
     $('.display-results-section').append(`
-    <div class="search-results-card">
+    <div class="search-results-card" data-num='${obj.number}'>
     <div class='card-header-div'>
         <h3 class="roomnum-card-h3">Room Num: ${obj.number}</h3>
         <h3 class="roomtype-card-h3">Room Type: ${obj.roomType}</h3>
@@ -179,7 +182,7 @@ function generateResults(arrayOfRooms) {
 }
 
 function makeABooking() {
-  customer
+  
 }
 
 

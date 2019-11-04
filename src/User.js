@@ -19,7 +19,7 @@ class User {
     }, 0)
   }
 
-  bookARoom(date, id = this.id, roomNumber) {
+  bookARoom(date, roomNumber, id = this.id) {
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
       method: 'POST',
       headers: {
