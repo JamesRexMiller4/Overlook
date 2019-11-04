@@ -154,11 +154,17 @@ p {
   border: 2px solid black;
   color: black;
   border-radius: 5px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
   font-size: 1.5em;
   padding: 5px;
   margin-left: 20px;
 }
 
+.submit-login-btn:hover {
+  color: rgb(197, 144, 64);
+  background-color: rgb(134, 15, 15);
+}
 
 
 

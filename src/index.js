@@ -9,6 +9,9 @@ import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/residential-suite.jpg';
+import './images/suite.jpg';
+import './images/single-room-twin.jpg';
+import './images/junior-suite.jpg';
 import './images/fluffykins.jpg';
 import './images/deathstar.gif';
 
@@ -64,6 +67,12 @@ $('#filter-submit-btn').on('click', function() {
   let features = grabFeatures()
   generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
 })
+
+$('#display-results-parent').on('click', function(e) {
+  event.preventDefault()
+  console.log($('event.target').closest('.search-results-card'))
+})
+
 
 // Customer DOM Manipulation 
 function grabFilterMenuValues() {
@@ -129,7 +138,7 @@ function generateResults(arrayOfRooms) {
         <h3 class="roomtype-card-h3">Room Type: ${obj.roomType}</h3>
     </div>
     <div class="room-image-div">
-        <img class="room-image-pic"src="./images/residential-suite.jpg">
+        <img class="room-image-pic" src="">
     </div>
     <div class='details-card-div'>
         <ul class='details-ul'>
@@ -155,12 +164,24 @@ function generateResults(arrayOfRooms) {
         <label for='customer-book-btn' class='details-label book-label'>BOOK</label>
         <input type="submit" value='SUBMIT' id='customer-book-btn' class='book-btn'>
     </div>
-</div>
-    `)
+</div>`)
 
-
-  })
+    if (obj.roomType === 'single room') {
+      $('.room-image-pic').attr("src", "./images/single-room-twin.jpg")
+    } else if (obj.roomType === 'suite') {
+      $('.room-image-pic').attr("src", "./images/suite.jpg");
+    } else if (obj.roomType === 'junior suite') {
+      $('.room-image-pic').attr('src', './images/junior-suite.jpg')
+    } else if (obj.roomType === 'residential suite') {
+      $('.room-image-pic').attr('src', './images/residential-suite.jpg')
+    } 
+  });
 }
+
+function makeABooking() {
+  customer
+}
+
 
 
 function generateBookingHistory(arrayOfBookings) {
@@ -180,7 +201,7 @@ function generateBookingHistory(arrayOfBookings) {
 
 function generateSpendingHistory(bookings, rooms) {
   let total = customer.findCustomerSpendingHistory(bookings, rooms)
-  $('#customer-spending-history-p').text(total)
+  $('#customer-spending-history-p').text(total.toFixed(2))
 }
 
 
