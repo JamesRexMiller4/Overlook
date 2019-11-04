@@ -120,12 +120,13 @@
 }
 
 .search-results-card {
-    width: 80%;
+    width: 90%;
     height: 300px;
     background-color: hsl(191°, 62%, 92%);
     margin: 5px;
     border: 10px solid;
     border-color: lightblue;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -160,6 +161,7 @@
 
 .details-card-div {
     grid-area: details-right;
+    margin-right: 30px;
 }
 
 .details-ul {
@@ -170,13 +172,25 @@
 .details-li {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    align-content: space-between;
+    color: black;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 30px;
+    align-content: baseline;
 
     p {
         display: block;
         color: black;
-        font-size: 1em;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 1.5em;
+        text-align: left;
+    }
+
+    .details-label {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
     }
 }
 
@@ -190,17 +204,50 @@
     p {
         font-size: 2em;
         color: black;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: bold;
+        text-align: center;
     }
+}
+
+.card-cost-h3 {
+    margin-left: 10px;
 }
 
 .details-btn-div {
     grid-area: book-right;
+    height: auto;
+    justify-content: space-evenly;
+    display: flex;
 }
+
+.book-label {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.book-btn {
+    width: 200px;
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    background-color: goldenrod;
+}
+
+.book-btn:hover {
+    color: rgb(197, 144, 64);
+    background-color: rgb(134, 15, 15);
+}
+
 
 .room-image-pic {
     width: 200px;
     height: 140px;
-    border: 5px solid blue;
+    margin-left: 10px;
+    border: 10px solid rgb(36, 114, 139);
+    border-radius: 5px;
 }
 
 .customer-booking-history-div {
@@ -232,4 +279,7 @@
 .spending-total-p {
     font-size: 2em;
     color: black;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    text-align: center;
 }

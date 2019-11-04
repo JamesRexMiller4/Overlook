@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import User from './User';
 import Customer from './Customer';
 import Manager from './Manager';
 import Hotel from './Hotel';
@@ -13,7 +12,6 @@ import './images/residential-suite.jpg';
 import './images/fluffykins.jpg';
 import './images/deathstar.gif';
 
-let user
 let customer
 let manager
 let hotel
@@ -44,8 +42,7 @@ Promise.all([
     displayKPIs();
   }
 }).then(() => {
-  // updateDOM();
-  // updateCharts();
+
 })
 
 // EVENT LISTENERS
@@ -65,27 +62,22 @@ $('#filter-submit-btn').on('click', function() {
   let date = grabDate()
   let price = grabFilterMenuValues()
   let features = grabFeatures()
-  console.log(hotel.findRoomsAvailableByDate(date))
-  console.log(hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date)))
-  console.log(hotel.filterRoomsByFeatures(features, hotel.findRoomsAvailableByDate(date)))
-  generateResults(hotel.filterRoomsByFeatures(features, hotel.findRoomsAvailableByDate(date)));
+  generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
 })
 
 // Customer DOM Manipulation 
-
-
 function grabFilterMenuValues() {
   let range = [];
-  let min = $('#min-price').val()
-  let max = $('#max-price').val()
-  range.push(min)
-  range.push(max)
+  let min = parseInt($('#min-price').val());
+  let max = parseInt($('#max-price').val());
+  range.push(min);
+  range.push(max);
   return range
 }
 
 function grabDate() {
-  let date = $('#date-picker').val()
-  date = date.split('-').join('/')
+  let date = $('#date-picker').val();
+  date = date.split('-').join('/');
   return date
 }
 
@@ -142,26 +134,26 @@ function generateResults(arrayOfRooms) {
     <div class='details-card-div'>
         <ul class='details-ul'>
             <li class='details-li'>
-                    <label>Bed Type</label>
+                    <label class="details-label">Bed Type</label>
                     <p id="bedType-details-p" class='details-li-p'>${obj.bedSize}</p>
             </li>
             <li class='details-li'>
-                    <label>Number of Beds</label>
+                    <label class="details-label">Number of Beds</label>
                     <p id="numBeds-details-p" class='details-li-p'>${obj.numBeds}</p>
             </li>
             <li class='details-li'>
-                    <label>Bidet</label>
+                    <label class="details-label">Bidet</label>
                     <p id="bidet-details-p" class='details-li-p'>${obj.bidet}</p>
             </li>
         </ul>
     </div>
     <div class='details-cost-per-night-div'>
-        <h3>Cost Per Night</h3>
+        <h3 class='card-cost-h3'>Cost Per Night</h3>
         <p class='details-cost-per-night-p'>${obj.costPerNight}</p>
     </div>
     <div class='details-btn-div'>
-        <label for='customer-book-btn'>BOOK</label>
-        <input type="submit" id='customer-book-btn' class='btn'>
+        <label for='customer-book-btn' class='details-label book-label'>BOOK</label>
+        <input type="submit" value='SUBMIT' id='customer-book-btn' class='book-btn'>
     </div>
 </div>
     `)
