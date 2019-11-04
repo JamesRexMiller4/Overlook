@@ -6,7 +6,7 @@ import Hotel from './Hotel';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-import './css/customer.scss';
+// import './css/customer.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/residential-suite.jpg';
@@ -36,9 +36,9 @@ Promise.all([
   hotel.getTodaysDate()
   setDatePicker()
   if(document.location.pathname ===  "/customer.html") {
-  welcomeLoyalCustomer();
-  generateBookingHistory(customer.findCustomerBookingHistory(hotel.bookings))
-  generateSpendingHistory(hotel.bookings, hotel.rooms)
+    welcomeLoyalCustomer();
+    generateBookingHistory(customer.findCustomerBookingHistory(hotel.bookings))
+    generateSpendingHistory(hotel.bookings, hotel.rooms)
   } else if (document.location.pathname ===  "/manager.html") {
     welcomeSupremeManagerFluffykins();
     displayKPIs();
@@ -51,7 +51,8 @@ Promise.all([
 // EVENT LISTENERS
 $('.submit-login-btn').on('click', function() {
   event.preventDefault();
-  storeIDLocalStorage()
+  storeIDLocalStorage();
+  $('body').css('background-image', 'none');
   if ($('#username').val() === 'manager' && $('#password').val() === 'overlook2019') {
     window.location = "./manager.html";
   } else if ($('#username').val().includes('customer') && $('#password').val() === 'overlook2019') {
@@ -195,14 +196,14 @@ function welcomeLoyalCustomer() {
   let customerID = parseInt(window.localStorage.getItem('id'));
   customer = new Customer(customerID)
   let customerProfile = hotel.findCurrentUser(customerID)
-  $('.customer-greeting-message-h1').text(`Welcome ${customerProfile.name}!`)
+  $('.customer-greeting-message-h2').text(`Welcome Back ${customerProfile.name}!`)
 
 }
 
 function storeIDLocalStorage() {
- let arr =  $('#username').val().split('r')
- let customerID = arr[1]
- window.localStorage.setItem('id', customerID)
+  let arr =  $('#username').val().split('r')
+  let customerID = arr[1]
+  window.localStorage.setItem('id', customerID)
 }
 
 
