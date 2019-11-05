@@ -23,6 +23,8 @@ body {
 header {
   width: inherit;
   height: 20vh;
+  display: flex;
+  justify-content: space-between;
   background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
 }
 

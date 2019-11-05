@@ -84,7 +84,7 @@ $('#filter-submit-btn').on('click', function() {
 })
 
 $('#display-results-parent').on('click', function(e) {
-// 
+$(event.target).closest('.details-card-div').toggle('active')
 })
 
 $('#customer-id-search-btn').on('click', function() {
@@ -101,7 +101,6 @@ $('#make-booking-link').on('click', function() {
 
 
 $('.customer-container-div').on('click', function(event) {
-  console.log('hello')
   $(event.target).closest('.customer-card-div').toggleClass('active')
 })
 

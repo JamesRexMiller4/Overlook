@@ -9,14 +9,14 @@
 </head>
 <body class='manager-body'>
   <header> 
-    <h1>DEATHSTAR Hotel</h1>
+        <h1>DEATHSTAR H<img src='./images/deathstar.gif' class='hotel-logo'>TEL</h1>
+        <a href='#' class='log-out-link'>Log Out</a>
   </header>
     <main class='manager-main'>
         <div class='manager-header-div'>
-        <h2 class='manager-greeting-h2'>Hello Supreme Manager Fluffkins!</h2>
+        <h2 class='manager-greeting-h2'>Hello Supreme Manager Fluffykins!</h2>
         <img src='./images/fluffykins.jpg' class='manager-profile-pic'>
         </div>
-        <section class='manager-dashboard'>
             <section class='todays-numbers-section'>
                 <div class='manager-kpi-div'>
                     <h2>Total Revenue</h2>
@@ -32,21 +32,30 @@
                 </div>
             </section>
             <section class='manager-duties-section'>
-                <div class='duties-header-section'>
-                    <h2 class='manage-bookings-h2'>Manage Bookings</h2>
-                    <label for='customer-id-search'>Search for Customer</label>
-                    <input type="text" id='customer-id-search'>
-                </div>
+                <section class='select-customers-section'>
+                    <h2 class='manager-duties-h2'>Select Customer</h2>
+                    <div class='customer-container-div'>
+                        <div class='customer-card-div'>
+                            <h3>Angus Swift</h3>
+                            <h3>ID: 23</h3>
+                        </div>
+                    </div>
+                </section>
                 <div class='bookings-container-div'>
-                    <section class='make-booking-section'>
-                        <a href='#' id='make-booking-link' class='select-booking-duty-a'>Make a Booking</a>
+                    <section class='booking-section'>
+                        <a href='#make-booking-link' id='make-booking-link' class='select-booking-duty-a'>Make a Booking</a>
+                        <a href='#delete-booking-link' id='delete-booking-link' class='select-booking-duty-a'>Delete a Booking</a>
+                        <a href='#order-room-service-link' id='order-room-service-link' class='select-booking-duty-a'>Place a Room Service Order</a>
                     </section>
-                    <section class='delete-booking-section'>
-                        <a href='#' id='delete-booking-link' class='select-booking-duty-a'>Delete a Booking</a>
+                    <section class='booking-screen-section'>
+                        <div class='make-booking-div'>
+                            <section id="display-results-parent" class="manager-display-results-section"></section>
+                        </div>
+                        <div class='delete-booking-div'></div>
+                        <div class='place-order-div'></div>
                     </section>
                 </div>
             </section>
-        </section>
     </main>
 </body>
 </html>
