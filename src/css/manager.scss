@@ -10,7 +10,9 @@
   
   .manager-header-div {
     padding: 20px;
-    background-color: black;
+    background-image: url('../images/nightsky.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 130px;
     display: flex;
     justify-content: space-around;
@@ -18,32 +20,30 @@
   
   .manager-greeting-h2 {
     color: whitesmoke;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 3em;
   }
   
   .manager-profile-pic {
     width: 100px;
     height: 100px;
-    border: 5px solid slateblue;
+    border: 10px solid rgb(50, 33, 160);
     border-radius: 50%;
     margin: -10px;
   }
   
-  .manager-dashboard {
-    margin: 0 auto;
-    background-color: #2a5298;
-    display: grid;
-    grid-template-columns: 5fr;
-    grid-template-areas:
-      'top'
-      'bottom';
-  }
   
+  .manager-p {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+  }
   
   .todays-numbers-section {
     margin-top: -8px;
     grid-area: top;
     height: 200px;
-    border: 10px solid slateblue;
+    border: 10px solid rgb(50, 33, 160);
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -51,35 +51,67 @@
   }
   
   .manager-duties-section {
-    grid-area: bottom;
-    border: 2px solid red;
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-      'header header'
-      'make-booking delete-booking'
-  }
-  
-  .manage-bookings-h2 {
-    display: inline-block;
-  }
-  
-  .duties-header-section {
-    grid-area: header;
+    background-color: hsl(229, 83%, 77%);
+    margin: 0px;
     display: flex;
+    flex-direction: column;
+  }
+
+  .manager-duties-h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 4em;
+  }
+
+  .select-customers-section {
+    display: flex;
+    flex-direction: column;
+    margin: 2px
+  }
+
+
+  
+  .customer-container-div {
+    width: 90%;
+    height: 200px;
+    background-color: white;
+    border: 10px solid black;
+    display: flex;
+    overflow: scroll;
+  }
+  
+  .customer-card-div {
+    width: 400px;
+    padding: 50px;
+    height: 100%;
+    margin: auto auto;
+    background-color: rgb(187, 220, 221);
+    border: 10px solid hsl(180, 80%, 42%);
     justify-content: space-evenly;
-    align-content: flex-end;
-    border-bottom: 10px solid black;
-  }
-  
-  .bookings-container-div {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: space-between;
-    align-content: space-between;
-    align-self: center;
+    flex-direction: column;
+  }
+
+  .customer-card-div:hover {
+    // border-color: hsl(248, 67%, 38%);
+    // background-color: hsl(229, 83%, 77%);
+    cursor: pointer;
+  }
+
+  .customer-card-div:active {
+    background-color: rgb(245, 155, 148);
+    border-color: red;
+  }
+
+  .active {
+    background-color: rgb(245, 155, 148);
+    border: 10px solid red;
+  }
+
+  .bookings-container-div {
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
   }
   
   
@@ -88,12 +120,11 @@
     border-left: 1px solid black;
     width: 40%;
     height: 100%;
-    background-color: slateblue;
+    background-color: rgb(97, 119, 218);
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: space-evenly;
-    align-content: center;
   }
   
   .manager-p {
@@ -101,15 +132,72 @@
     color: black;
   }
   
-  .select-booking-duty-a {
+  .booking-section {
+    grid-area: booking;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   
-    font-size: 2em;
+  .select-booking-duty-a {
+    font-family: 'Rajdhani', sans-serif;
     font-weight: bold;
+    font-size: 2em;
     text-decoration: none;
     color: black;
-  
+    margin: 40px;
   }
   
   .select-booking-duty-a:hover {
     color: white;
+  }
+  
+  .customer-search-bar {
+    width: 40%;
+    border: 2px solid black;
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+
+  .make-booking-div {
+    width: 100%;
+    height: 500px;
+    padding: 20px;
+    border: 10px solid black;
+    background-color: white;
+    
+  }
+
+  .delete-booking-div {
+    width: 100%;
+    height: 500px;
+    border: 10px solid black;
+    background-color: white;
+    display: none;
+  }
+
+  .place-order-div {
+    width: 100%;
+    height: 500px;
+    border: 10px solid black;
+    background-color: white;
+    display: none;
+  }
+
+
+  .manager-display-results-section {
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    margin: 0px;
+    background-image: none;
+    background-color: white;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
   }
