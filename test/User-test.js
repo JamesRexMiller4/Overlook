@@ -53,7 +53,7 @@ describe('User', () => {
   });
 
   it('should be able to find the total spending for a particular customer', () => {
-    expect(user.findCustomerSpendingHistory(bookings, rooms)).to.equal(764.09)
+    expect(user.findCustomerSpendingHistory(user.findCustomerBookingHistory(bookings, 4), rooms)).to.equal(764.09)
   })
 
 })

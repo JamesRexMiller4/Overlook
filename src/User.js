@@ -9,7 +9,7 @@ class User {
   }
 
   findCustomerSpendingHistory(bookings, rooms) {
-    return this.findCustomerBookingHistory(bookings).reduce((acc, booking) => {
+    return bookings.reduce((acc, booking) => {
       rooms.forEach(room => {
         if (room.number === booking.roomNumber) {
           acc += room.costPerNight
