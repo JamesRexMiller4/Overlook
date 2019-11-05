@@ -15,7 +15,7 @@
     <main class='manager-main'>
         <div class='manager-header-div'>
         <h2 class='manager-greeting-h2'>Hello Supreme Manager Fluffykins!</h2>
-        <img src='./images/fluffykins.jpg' alt='A profile picture of the impetuous Fluffykins, a orange cat with no regard for customer service, only hard cold cash' class='manager-profile-pic'>
+        <img src='./images/fluffykins.jpg' alt='A profile picture of the impetuous Fluffykins, a orange cat with no regard for customer service, only cold hard cash' class='manager-profile-pic'>
         </div>
             <section class='todays-numbers-section'>
                 <div class='manager-kpi-div'>
@@ -43,16 +43,16 @@
                 </section>
                 <div class='bookings-container-div'>
                     <section class='booking-section'>
-                        <a href='#make-booking-link' id='make-booking-link' class='select-booking-duty-a'>Make a Booking</a>
-                        <a href='#delete-booking-link' id='delete-booking-link' class='select-booking-duty-a'>Delete a Booking</a>
-                        <a href='#order-room-service-link' id='order-room-service-link' class='select-booking-duty-a'>Place a Room Service Order</a>
+                        <a href='javascript:;' id='make-booking-link' class='select-booking-duty-a'>Make a Booking</a>
+                        <a href='javascript:;' id='delete-booking-link' class='select-booking-duty-a'>Delete a Booking</a>
+                        <a href='javascript:;' id='order-room-service-link' class='select-booking-duty-a'>Place a Room Service Order</a>
                     </section>
                     <section class='booking-screen-section'>
+                        <label class='manager-datepicker-label hidden'>Select Date</label>
+                        <input type="date" class='datepicker manager-date hidden' id='date-picker' required pattern="\d{4}-\d{2}-\d{2}">
                         <div class='make-booking-div'>
                             <section id="display-results-parent" class="manager-display-results-section"></section>
                         </div>
-                        <div class='delete-booking-div'></div>
-                        <div class='place-order-div'></div>
                     </section>
                 </div>
             </section>

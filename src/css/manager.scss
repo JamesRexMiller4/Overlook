@@ -112,7 +112,8 @@
 
   .customer-details-div {
     width: 60%;
-    height: 400px;
+    margin: 0px;
+    height: 380px;
     background-color: white;
     border: 10px solid black;
   }
@@ -141,11 +142,16 @@
   }
   
   .booking-section {
-    grid-area: booking;
     width: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .booking-screen-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
   }
   
   .select-booking-duty-a {
@@ -161,17 +167,6 @@
     color: white;
   }
   
-  .customer-search-bar {
-    width: 40%;
-    border: 2px solid black;
-    text-align: center;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-  }
-
-
   .make-booking-div {
     width: 100%;
     height: 500px;
@@ -212,6 +207,7 @@
 
   .customer-history-results {
     height: auto;
+    margin: auto;
     border: 5px solid black;
     display: flex;
     justify-content: flex-start;
@@ -236,4 +232,35 @@
     height: 100px;
     border: 5px solid black;
     border-radius: 50%;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+
+  .delete-booking-card {
+    width: 90%;
+    height: 300px;
+    background-color: hsl(191°, 62%, 92%);
+    margin: 5px;
+    border: 10px solid;
+    border-color: lightblue;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-around;
+  }
+
+  .delete-booking-details-div {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .display-results-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: scroll;
   }

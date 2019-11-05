@@ -85,21 +85,23 @@ $('#filter-submit-btn').on('click', function() {
 })
 
 $('#display-results-parent').on('click', function(event) {
-  $(event.target).closest('.details-card-div').toggle('active')
+  if (event.target === $('#customer-delete-btn')[0]) {
+    let id = event.target.closest('.delete-booking-card').dataset.num
+    manager.deleteBooking(id)
+  } else {
+  } console.log(false)
 })
-
-// $('#customer-id-search-btn').on('click', function() {
-//   let userProfile = hotel.findCurrentUser(searchForCustomer())
-//   console.log(userProfile)
-//   displayCustomerInfo(userProfile)
-// })
 
 $('#make-booking-link').on('click', function() {
   displayRoomsAvailableToday()
   console.log(hotel.findRoomsAvailableByDate())
 })
 
-
+$('#delete-booking-link').on('click', function() {
+  console.log($('.active'))
+  let id = parseInt($('.active').children()[1].innerText.split(' ')[1]);
+  displayDeleteBookings(id, hotel.rooms);
+})
 
 $('.customer-container-div').on('click', function(event) {
   $(event.target).closest('.customer-card-div').siblings().removeClass('active')
@@ -220,7 +222,13 @@ function generateResults(arrayOfRooms) {
 }
 
 function generateBookingHistory(arrayOfBookings) {
-  arrayOfBookings.sort((a, b) => b.date - a.date)
+  arrayOfBookings.sort((a, b) => {
+    if (b.date < a.date) {
+      return -1
+    } else if (b.date > a.date) {
+      return 1
+    }
+  })
   arrayOfBookings.forEach(obj => {
     $('.customer-booking-history-div').append(`
   <div class="history-results-card">
@@ -283,15 +291,15 @@ function generateTotalRooms() {
   $('#manager-total-open-rooms-p').text(totalOpenRooms)
 }
 
-function displayCustomerInfo(userObj) {
-  $('#display-user-result').html('')
-  $('#display-user-result').append(`
-  <div id='user-card-display-result' data-num=${userObj.id} class='user-card-div'>
-    <h3 class='user-card-h3'>${userObj.name}</h3>
-    <h3 class='user-card-h3'>ID : ${userObj.id}</h3>
-  </div>
-  `)
-}
+// function displayCustomerInfo(userObj) {
+//   $('#display-user-result').html('')
+//   $('#display-user-result').append(`
+//   <div id='user-card-display-result' data-num=${userObj.id} class='user-card-div'>
+//     <h3 class='user-card-h3'>${userObj.name}</h3>
+//     <h3 class='user-card-h3'>ID : ${userObj.id}</h3>
+//   </div>
+//   `)
+// }
 
 function displayRoomsAvailableToday() {
   managerGenerateResults(hotel.findRoomsAvailableByDate())
@@ -360,9 +368,15 @@ function displayCustomers(customers) {
 }
 
 function displayCustomerBookingHistory(id, name) {
-  let bookings = manager.findCustomerBookingHistory(hotel.bookings, id)
-  let spending = manager.findCustomerSpendingHistory(bookings, hotel.rooms)
-  console.log(spending)
+  let bookings = manager.findCustomerBookingHistory(hotel.bookings, id).sort((a, b) => {
+    if (b.date < a.date) {
+      return -1
+    } else if (b.date > a.date) {
+      return 1
+    }
+  })
+  let spending = manager.findCustomerSpendingHistory(bookings, hotel.rooms).toFixed(2)
+  
   $('.customer-details-div').html('')
   $('.customer-details-div').append(`
   <h2 class='customer-details-name-h2'>${name}</h2>
@@ -382,4 +396,47 @@ function displayCustomerBookingHistory(id, name) {
         </div>
       </div>`)
   })
+}
+
+
+function displayDeleteBookings(id, rooms) {
+  let bookings = manager.findCustomerBookingHistory(hotel.bookings, id).sort((a, b) => {
+    if (b.date < a.date) {
+      return -1
+    } else if (b.date > a.date) {
+      return 1
+    }
+  }).filter(booking => booking.date > hotel.date)
+
+  appendDeletableBookings(bookings)
+}
+
+function appendDeletableBookings(bookings) {
+  $('#display-results-parent').html('');
+  bookings.forEach(booking => {
+    $('#display-results-parent').append(`
+    <div class="delete-booking-card" data-num='${booking.id}'>
+      <h3 class='booking-id-h3'>Booking Order #: ${booking.id}</h3>
+      <div class='delete-booking-details-div'>
+        <h3 class=''>Date of Booking: ${booking.date}</h3>
+        <h3 class="">Room Num: ${booking.roomNumber}</h3>
+      </div>
+      <div class='details-btn-div'>
+        <input type="submit" value='DELETE' id='customer-delete-btn' class='book-btn'>
+      </div>
+    </div>`)
+
+  })
+}
+
+// let deletableBookings = rooms.filter(room => {
+  //   let found = bookings.find(booking => booking.roomNumber === room.number)
+  //   if (found) {
+  //     return found
+  //   }
+  // })
+
+
+function deleteABooking() {
+
 }
