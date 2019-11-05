@@ -66,11 +66,10 @@
   .select-customers-section {
     display: flex;
     flex-direction: column;
-    margin: 2px
+    margin: 2px;
+    margin-top: 20px;
   }
 
-
-  
   .customer-container-div {
     width: 90%;
     height: 200px;
@@ -82,7 +81,7 @@
   
   .customer-card-div {
     width: 400px;
-    padding: 50px;
+    padding: 50px 70px;
     height: 100%;
     margin: auto auto;
     background-color: rgb(187, 220, 221);
@@ -93,8 +92,6 @@
   }
 
   .customer-card-div:hover {
-    // border-color: hsl(248, 67%, 38%);
-    // background-color: hsl(229, 83%, 77%);
     cursor: pointer;
   }
 
@@ -108,6 +105,17 @@
     border: 10px solid red;
   }
 
+  .customer-details-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .customer-details-div {
+    width: 60%;
+    height: 400px;
+    background-color: white;
+    border: 10px solid black;
+  }
   .bookings-container-div {
     margin: 0px auto;
     display: flex;
@@ -200,4 +208,32 @@
     overflow: scroll;
     display: flex;
     flex-direction: column;
+  }
+
+  .customer-history-results {
+    height: auto;
+    border: 5px solid black;
+    display: flex;
+    justify-content: flex-start;
+    overflow: scroll;
+
+  }
+
+  .customer-details-name-h2 {
+    display: inline;
+  }
+
+  .customer-details-spending-h3 {
+    display: inline;
+    float: right;
+  }
+
+
+  .customer-profile-pic {
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    border: 5px solid black;
+    border-radius: 50%;
   }

@@ -111,7 +111,11 @@ p {
 }
 
 .login-form {
+  width: 310px;
   height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
 }
 
@@ -148,6 +152,8 @@ p {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
 }
 
 .submit-login-btn {
@@ -160,16 +166,14 @@ p {
   font-weight: bold;
   font-size: 1.5em;
   padding: 5px;
-  margin-left: 20px;
+  margin-left: 30px;
+  margin-bottom: 20px;
 }
 
 .submit-login-btn:hover {
   color: rgb(197, 144, 64);
   background-color: rgb(134, 15, 15);
 }
-
-
-
 
 .p-hint-login {
   margin-bottom: 20px;

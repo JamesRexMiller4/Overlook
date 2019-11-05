@@ -13,7 +13,8 @@ import './images/single-room-twin.jpg';
 import './images/junior-suite.jpg';
 import './images/fluffykins.jpg';
 import './images/deathstar.gif';
-import './images/nightsky.jpg'
+import './images/nightsky.jpg';
+import './images/stormtrooper.jpg';
 
 let customer
 let manager
@@ -39,7 +40,7 @@ Promise.all([
   if(document.location.pathname ===  "/customer.html") {
     welcomeLoyalCustomer();
     generateBookingHistory(customer.findCustomerBookingHistory(hotel.bookings))
-    generateSpendingHistory(hotel.bookings, hotel.rooms)
+    generateSpendingHistory(customer.findCustomerBookingHistory(hotel.bookings), hotel.rooms)
     generateResults(hotel.findRoomsAvailableByDate())
   } else if (document.location.pathname ===  "/manager.html") {
     welcomeSupremeManagerFluffykins();
@@ -83,15 +84,15 @@ $('#filter-submit-btn').on('click', function() {
   generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
 })
 
-$('#display-results-parent').on('click', function(e) {
-$(event.target).closest('.details-card-div').toggle('active')
+$('#display-results-parent').on('click', function(event) {
+  $(event.target).closest('.details-card-div').toggle('active')
 })
 
-$('#customer-id-search-btn').on('click', function() {
-  let userProfile = hotel.findCurrentUser(searchForCustomer())
-  console.log(userProfile)
-  displayCustomerInfo(userProfile)
-})
+// $('#customer-id-search-btn').on('click', function() {
+//   let userProfile = hotel.findCurrentUser(searchForCustomer())
+//   console.log(userProfile)
+//   displayCustomerInfo(userProfile)
+// })
 
 $('#make-booking-link').on('click', function() {
   displayRoomsAvailableToday()
@@ -101,7 +102,12 @@ $('#make-booking-link').on('click', function() {
 
 
 $('.customer-container-div').on('click', function(event) {
+  $(event.target).closest('.customer-card-div').siblings().removeClass('active')
   $(event.target).closest('.customer-card-div').toggleClass('active')
+  let details = ($(event.target).closest('.customer-card-div').children())
+  let id = parseInt(details[1].innerText.split(' ')[1])
+  let name = details[0].innerText
+  displayCustomerBookingHistory(id, name)
 })
 
 // Customer DOM Manipulation 
@@ -123,7 +129,10 @@ function grabDate() {
 function grabFeatures() {
   let searchQueryObj = {};
   let arr = []
-  let bidet = {bidet: $("input[type='checkbox']").prop('checked')};
+  let bidet = {}
+  if ($("input[type='checkbox']").prop('checked')) {
+    bidet = {bidet: $("input[type='checkbox']").prop('checked')};
+  } 
   arr.push(bidet)
   let numBeds = {}
   if ($('#num-beds').val() > 0) {
@@ -209,9 +218,6 @@ function generateResults(arrayOfRooms) {
   });
 
 }
-// $('#customer-book-btn').on('click', function(e) {
-//   $(this).closest('div.search-results-card').remove();
-// })
 
 function generateBookingHistory(arrayOfBookings) {
   arrayOfBookings.sort((a, b) => b.date - a.date)
@@ -350,5 +356,30 @@ function displayCustomers(customers) {
         <h3>ID: ${customer.id}</h3>
       </div>`
     )
+  })
+}
+
+function displayCustomerBookingHistory(id, name) {
+  let bookings = manager.findCustomerBookingHistory(hotel.bookings, id)
+  let spending = manager.findCustomerSpendingHistory(bookings, hotel.rooms)
+  console.log(spending)
+  $('.customer-details-div').html('')
+  $('.customer-details-div').append(`
+  <h2 class='customer-details-name-h2'>${name}</h2>
+  <h3 class='customer-details-spending-h3'>Total Money Spent: ${spending}</h3>
+  <img src='./images/stormtrooper.jpg' class='customer-profile-pic' alt='A profile picture of a stormtrooper, features indescriminate, for behind that mask lies a mystery yet to be told.'>
+  <div class='customer-details-history-div'>
+    <h3>Booking History</h3>
+    <div class='customer-history-results'></div>
+  </div>
+  `)
+  bookings.forEach(booking => {
+    $('.customer-history-results').append(`
+      <div class='customer-history-card'>
+        <div class='customer-card-div'>
+          <h3>Room Number ${booking.roomNumber}</h3>
+          <h3>${booking.date}</h3>
+        </div>
+      </div>`)
   })
 }
