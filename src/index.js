@@ -170,7 +170,7 @@ function generateResults(arrayOfRooms) {
   console.log(arrayOfRooms)
   $('.display-results-section').html('');
   if (arrayOfRooms.length < 1) {
-    alert('So sorry we have no available rooms that meet that search criteria, please try again')
+    // alert('So sorry we have no available rooms that meet that search criteria, please try again')
   }
   arrayOfRooms.forEach(obj => {
     $('.display-results-section').append(`
