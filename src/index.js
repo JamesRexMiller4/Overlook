@@ -5,7 +5,6 @@ import Hotel from './Hotel';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-// import './css/customer.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/residential-suite.jpg';
@@ -14,6 +13,7 @@ import './images/single-room-twin.jpg';
 import './images/junior-suite.jpg';
 import './images/fluffykins.jpg';
 import './images/deathstar.gif';
+import './images/nightsky.jpg'
 
 let customer
 let manager
@@ -40,9 +40,11 @@ Promise.all([
     welcomeLoyalCustomer();
     generateBookingHistory(customer.findCustomerBookingHistory(hotel.bookings))
     generateSpendingHistory(hotel.bookings, hotel.rooms)
+    generateResults(hotel.findRoomsAvailableByDate())
   } else if (document.location.pathname ===  "/manager.html") {
     welcomeSupremeManagerFluffykins();
     displayKPIs();
+    displayCustomers(hotel.users)
   }
 }).then(() => {
 
@@ -52,30 +54,56 @@ Promise.all([
 $('.submit-login-btn').on('click', function() {
   event.preventDefault();
   storeIDLocalStorage();
-  $('body').css('background-image', 'none');
   if ($('#username').val() === 'manager' && $('#password').val() === 'overlook2019') {
+    $('body').css('background-image', 'none');
     window.location = "./manager.html";
   } else if ($('#username').val().includes('customer') && $('#password').val() === 'overlook2019') {
+    $('body').css('background-image', 'none');
     window.location = "./customer.html";
+  } else if (($('#username').val() !== 'manager' || $('#password').val() === 'overlook2019') || !$('#username').val().includes('customer')) {
+    $('#username').val('')
+    $('#password').val('')
+    alert('Invalid credentials submitted, please try again')
   }
 });
+
+$('.log-out-link').on('click', function() {
+  window.location = "./index.html";
+})
 
 $('#filter-submit-btn').on('click', function() {
   event.preventDefault()
   let date = grabDate()
   let price = grabFilterMenuValues()
   let features = grabFeatures()
+  console.log(features)
+  console.log(hotel.findRoomsAvailableByDate(date))
+  console.log(hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date)))
+  console.log(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
   generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
 })
 
 $('#display-results-parent').on('click', function(e) {
-  event.preventDefault()
-  let eventObj = $(event.target.closest('.search-results-card'))
-  let roomDetails = eventObj["0"].dataset.num
-  let date = grabDate()
-  customer.bookARoom(date, roomDetails)
+// 
 })
 
+$('#customer-id-search-btn').on('click', function() {
+  let userProfile = hotel.findCurrentUser(searchForCustomer())
+  console.log(userProfile)
+  displayCustomerInfo(userProfile)
+})
+
+$('#make-booking-link').on('click', function() {
+  displayRoomsAvailableToday()
+  console.log(hotel.findRoomsAvailableByDate())
+})
+
+
+
+$('.customer-container-div').on('click', function(event) {
+  console.log('hello')
+  $(event.target).closest('.customer-card-div').toggleClass('active')
+})
 
 // Customer DOM Manipulation 
 function grabFilterMenuValues() {
@@ -129,7 +157,8 @@ function setDatePicker() {
 
 
 function generateResults(arrayOfRooms) {
-  $('.display-results-section').html('')
+  console.log(arrayOfRooms)
+  $('.display-results-section').html('');
   if (arrayOfRooms.length < 1) {
     alert('So sorry we have no available rooms that meet that search criteria, please try again')
   }
@@ -179,13 +208,11 @@ function generateResults(arrayOfRooms) {
       $('.room-image-pic').attr('src', './images/residential-suite.jpg')
     } 
   });
+
 }
-
-function makeABooking() {
-  
-}
-
-
+// $('#customer-book-btn').on('click', function(e) {
+//   $(this).closest('div.search-results-card').remove();
+// })
 
 function generateBookingHistory(arrayOfBookings) {
   arrayOfBookings.sort((a, b) => b.date - a.date)
@@ -237,12 +264,12 @@ function displayKPIs() {
 }
 
 function generateTodaysRevenue() {
-  let revenue = manager.findTotalRevenueForToday(hotel.bookings, hotel.rooms, hotel.date)
+  let revenue = manager.findTotalRevenueForToday(hotel.bookings, hotel.rooms, hotel.date).toFixed(2)
   $('#manager-revenue-p').text('$' + revenue)
 }
 
 function generateOccupancyPercent() {
-  let percentOccupied = manager.findPercentageOfRoomsOccupiedForToday(hotel.bookings, hotel.rooms, hotel.date)
+  let percentOccupied = manager.findPercentageOfRoomsOccupiedForToday(hotel.bookings, hotel.rooms, hotel.date).toFixed(0)
   $('#manager-capacity-p').text(percentOccupied + '%')
 }
 
@@ -251,3 +278,78 @@ function generateTotalRooms() {
   $('#manager-total-open-rooms-p').text(totalOpenRooms)
 }
 
+function displayCustomerInfo(userObj) {
+  $('#display-user-result').html('')
+  $('#display-user-result').append(`
+  <div id='user-card-display-result' data-num=${userObj.id} class='user-card-div'>
+    <h3 class='user-card-h3'>${userObj.name}</h3>
+    <h3 class='user-card-h3'>ID : ${userObj.id}</h3>
+  </div>
+  `)
+}
+
+function displayRoomsAvailableToday() {
+  managerGenerateResults(hotel.findRoomsAvailableByDate())
+}
+
+function managerGenerateResults(arrayOfRooms) {
+  $('.manager-display-results-section').html('');
+  arrayOfRooms.forEach(obj => {
+    $('.manager-display-results-section').append(`
+    <div class="search-results-card" data-num='${obj.number}'>
+    <div class='card-header-div'>
+        <h3 class="roomnum-card-h3">Room Num: ${obj.number}</h3>
+        <h3 class="roomtype-card-h3">Room Type: ${obj.roomType}</h3>
+    </div>
+    <div class="room-image-div">
+        <img class="room-image-pic" src="">
+    </div>
+    <div class='details-card-div'>
+        <ul class='details-ul'>
+            <li class='details-li'>
+                    <label class="details-label">Bed Type</label>
+                    <p id="bedType-details-p" class='details-li-p'>${obj.bedSize}</p>
+            </li>
+            <li class='details-li'>
+                    <label class="details-label">Number of Beds</label>
+                    <p id="numBeds-details-p" class='details-li-p'>${obj.numBeds}</p>
+            </li>
+            <li class='details-li'>
+                    <label class="details-label">Bidet</label>
+                    <p id="bidet-details-p" class='details-li-p'>${obj.bidet}</p>
+            </li>
+        </ul>
+    </div>
+    <div class='details-cost-per-night-div'>
+        <h3 class='card-cost-h3'>Cost Per Night</h3>
+        <p class='details-cost-per-night-p'>${obj.costPerNight}</p>
+    </div>
+    <div class='details-btn-div'>
+        <label for='customer-book-btn' class='details-label book-label'>BOOK</label>
+        <input type="submit" value='SUBMIT' id='customer-book-btn' class='book-btn'>
+    </div>
+</div>`)
+
+    if (obj.roomType === 'single room') {
+      $('.room-image-pic').attr("src", "./images/single-room-twin.jpg")
+    } else if (obj.roomType === 'suite') {
+      $('.room-image-pic').attr("src", "./images/suite.jpg");
+    } else if (obj.roomType === 'junior suite') {
+      $('.room-image-pic').attr('src', './images/junior-suite.jpg')
+    } else if (obj.roomType === 'residential suite') {
+      $('.room-image-pic').attr('src', './images/residential-suite.jpg')
+    } 
+  });
+}
+
+
+function displayCustomers(customers) {
+  customers.forEach(customer => {
+    $('.customer-container-div').append(`
+      <div class='customer-card-div'>
+        <h3>${customer.name}</h3>
+        <h3>ID: ${customer.id}</h3>
+      </div>`
+    )
+  })
+}
