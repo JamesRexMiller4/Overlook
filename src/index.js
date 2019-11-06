@@ -149,22 +149,27 @@ function filterCustomerSearch() {
 }
 
 function generateResults(arrayOfRooms) {
-  $('#display-results-parent').html('');
-  arrayOfRooms.forEach((obj, index) => {
-    let roomImg;
 
-    if (obj.roomType === 'single room') {
-      roomImg = './images/single-room-twin.jpg';
-    } else if (obj.roomType === 'suite') {
-      roomImg = './images/suite.jpg';
-    } else if (obj.roomType === 'junior suite') {
-      roomImg = './images/junior-suite.jpg';
-    } else if (obj.roomType === 'residential suite') {
-      roomImg = './images/residential-suite.jpg';
-    } 
+  if (arrayOfRooms.length < 1) {
+    console.log('hello')
+    alertMessage()
+  } else {
+    $('#display-results-parent').html('');
+    arrayOfRooms.forEach((obj, index) => {
+      let roomImg;
 
-    $('#display-results-parent').append(
-      `<div class='search-results-card' data-num='${obj.number}' tabindex='${index}'>
+      if (obj.roomType === 'single room') {
+        roomImg = './images/single-room-twin.jpg';
+      } else if (obj.roomType === 'suite') {
+        roomImg = './images/suite.jpg';
+      } else if (obj.roomType === 'junior suite') {
+        roomImg = './images/junior-suite.jpg';
+      } else if (obj.roomType === 'residential suite') {
+        roomImg = './images/residential-suite.jpg';
+      } 
+
+      $('#display-results-parent').append(
+        `<div class='search-results-card' data-num='${obj.number}' tabindex='${index}'>
         <div class='card-header-div'>
           <h3 class='roomnum-card-h3'>Room Num: ${obj.number}</h3>
           <h3 class='roomtype-card-h3'>Room Type: ${obj.roomType}</h3>
@@ -196,8 +201,9 @@ function generateResults(arrayOfRooms) {
           <input type='submit' value='BOOK' id='customer-book-btn' class='book-btn'>
         </div>
       </div>`
-    );
-  });
+      );
+    });
+  }
 }
 
 function generateBookingHistory(arrayOfBookings) {
@@ -248,6 +254,14 @@ function customerBook(event) {
     let room = $(event.target.closest('.search-results-card'))[0].dataset.num
     customer.bookARoom(date, room)
   }
+}
+
+function alertMessage() {
+  $('.alert-message-card').fadeIn(1000)
+  setTimeout(function() {
+    $('.alert-message-card').fadeOut(3000)
+  }, 3000)
+  $('#display-results-parent').html('');
 }
 
 // MANAGER DOM 

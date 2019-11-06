@@ -309,3 +309,13 @@
     font-weight: bold;
     text-align: center;
 }
+
+.alert-message-card {
+    width: 600px;
+    background-color: wheat;
+    margin: auto;
+    border: 10px solid black;
+    z-index: 2;
+    position: absolute;
+    display: none;
+}
