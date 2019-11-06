@@ -36,7 +36,7 @@ Promise.all([
   hotel = new Hotel(new Date(), data[0].users, data[1].rooms, data[2].bookings);
   hotel.getTodaysDate();
   setDatePicker();
-  if(document.location.pathname ===  "/customer.html") {
+  if (document.location.pathname ===  "/customer.html") {
     welcomeLoyalCustomer();
     generateBookingHistory(customer.findCustomerBookingHistory(hotel.bookings));
     generateSpendingHistory(customer.findCustomerBookingHistory(hotel.bookings), hotel.rooms);
@@ -158,7 +158,7 @@ function setDatePicker() {
 
 function generateResults(arrayOfRooms) {
   $('#display-results-parent').html('');
-  arrayOfRooms.forEach(obj => {
+  arrayOfRooms.forEach((obj, index) => {
     let roomImg;
 
     if (obj.roomType === 'single room') {
@@ -172,7 +172,7 @@ function generateResults(arrayOfRooms) {
     } 
 
     $('#display-results-parent').append(
-      `<div class="search-results-card" data-num='${obj.number}'>
+      `<div class="search-results-card" data-num='${obj.number} tabindex='${index}'>
         <div class='card-header-div'>
           <h3 class="roomnum-card-h3">Room Num: ${obj.number}</h3>
           <h3 class="roomtype-card-h3">Room Type: ${obj.roomType}</h3>
@@ -217,9 +217,9 @@ function generateBookingHistory(arrayOfBookings) {
     }
   });
 
-  arrayOfBookings.forEach(obj => {
+  arrayOfBookings.forEach((obj, index) => {
     $('.customer-booking-history-div').append(`
-  <div class="history-results-card">
+  <div class="history-results-card" tabindex='${index}'>
   <div class='history-room-card-div'>
       <h3 class="history-roomnum-card-h3">Room Num: ${obj.roomNumber}</h3>
   </div>
@@ -279,9 +279,9 @@ function generateTotalRooms() {
 }
 
 function displayCustomers(customers) {
-  customers.forEach(customer => {
+  customers.forEach((customer, index) => {
     $('.customer-container-div').append(`
-      <div class='customer-card-div'>
+      <div class='customer-card-div' tabindex='${index}'>
         <h3>${customer.name}</h3>
         <h3>ID: ${customer.id}</h3>
       </div>`
@@ -309,14 +309,15 @@ function displayCustomerBookingHistory(id, name) {
     <div class='customer-history-results'></div>
   </div>
   `)
-  bookings.forEach(booking => {
+  bookings.forEach((booking, index) => {
     $('.customer-history-results').append(`
-      <div class='customer-history-card'>
+      <div class='customer-history-card' tabindex='${index}'>
         <div class='customer-card-div'>
           <h3>Room Number ${booking.roomNumber}</h3>
           <h3>${booking.date}</h3>
         </div>
-      </div>`)
+      </div>`
+    )
   })
 }
 

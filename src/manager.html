@@ -1,61 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A booking hotel site for the Imperial Army's Deathstar; may the force be with you">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Rajdhani:400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Rajdhani:400,500,600,700&display=swap"
+        rel="stylesheet">
     <title>DEATHSTAR Hotel</title>
 </head>
+
 <body class='manager-body'>
-  <header> 
-        <h1>DEATHSTAR H<img src='./images/deathstar.gif' alt='A gif of a yellow outline of the Deathstar that fades in and out, like a lighthouse in the lonely sea of space' class='hotel-logo'>TEL</h1>
+    <header>
+        <h1>DEATHSTAR H<img src='./images/deathstar.gif'
+                alt='A gif of a yellow outline of the Deathstar that fades in and out, like a lighthouse in the lonely sea of space'
+                class='hotel-logo'>TEL</h1>
         <a href='#' class='log-out-link'>Log Out</a>
-  </header>
+    </header>
     <main class='manager-main'>
         <div class='manager-header-div'>
-        <h2 class='manager-greeting-h2'>Hello Supreme Manager Fluffykins!</h2>
-        <img src='./images/fluffykins.jpg' alt='A profile picture of the impetuous Fluffykins, a orange cat with no regard for customer service, only cold hard cash' class='manager-profile-pic'>
+            <h2 class='manager-greeting-h2'>Hello Supreme Manager Fluffykins!</h2>
+            <img src='./images/fluffykins.jpg'
+                alt='A profile picture of the impetuous Fluffykins, a orange cat with no regard for customer service, only cold hard cash'
+                class='manager-profile-pic'>
         </div>
-            <section class='todays-numbers-section'>
-                <div class='manager-kpi-div'>
-                    <h2>Total Revenue</h2>
-                    <p id='manager-revenue-p' class='manager-p'></p>
-                </div>
-                <div class='manager-kpi-div'>
-                    <h2>Hotel Capacity</h2>
-                    <p id='manager-capacity-p' class='manager-p'></p>
-                </div>
-                <div class='manager-kpi-div'>
-                    <h2>Total Rooms Available</h2>
-                    <p id='manager-total-open-rooms-p' class='manager-p'></p>
+        <section class='todays-numbers-section'>
+            <div class='manager-kpi-div'>
+                <h2>Total Revenue</h2>
+                <p id='manager-revenue-p' class='manager-p'></p>
+            </div>
+            <div class='manager-kpi-div'>
+                <h2>Hotel Capacity</h2>
+                <p id='manager-capacity-p' class='manager-p'></p>
+            </div>
+            <div class='manager-kpi-div'>
+                <h2>Total Rooms Available</h2>
+                <p id='manager-total-open-rooms-p' class='manager-p'></p>
+            </div>
+        </section>
+        <section class='manager-duties-section'>
+            <section class='select-customers-section'>
+                <h2 class='manager-duties-h2'>Select Customer</h2>
+                <div class='customer-container-div'></div>
+            </section>
+            <section class='customer-details-section'>
+                <h2 class='manager-duties-h2'>Customer Details</h2>
+                <div class='customer-details-div'>
                 </div>
             </section>
-            <section class='manager-duties-section'>
-                <section class='select-customers-section'>
-                    <h2 class='manager-duties-h2'>Select Customer</h2>
-                    <div class='customer-container-div'></div>
+            <div class='bookings-container-div'>
+                <section class='booking-section'>
+                    <a href='javascript:;' id='make-booking-link' class='select-booking-duty-a'>Make a Booking</a>
+                    <a href='javascript:;' id='delete-booking-link' class='select-booking-duty-a'>Delete a Booking</a>
+                    <a href='javascript:;' id='order-room-service-link' class='select-booking-duty-a'>Place a Room
+                        Service Order</a>
                 </section>
-                <section class='customer-details-section'>
-                    <h2 class='manager-duties-h2'>Customer Details</h2>
-                    <div class='customer-details-div'>
+                <section class='booking-screen-section'>
+                    <label class='manager-datepicker-label hidden'>Select Date</label>
+                    <input type="date" class='datepicker manager-date hidden' id='date-picker' required
+                        pattern="\d{4}-\d{2}-\d{2}">
+                    <div class='make-booking-div'>
+                        <section id="display-results-parent" class="manager-display-results-section"></section>
                     </div>
                 </section>
-                <div class='bookings-container-div'>
-                    <section class='booking-section'>
-                        <a href='javascript:;' id='make-booking-link' class='select-booking-duty-a'>Make a Booking</a>
-                        <a href='javascript:;' id='delete-booking-link' class='select-booking-duty-a'>Delete a Booking</a>
-                        <a href='javascript:;' id='order-room-service-link' class='select-booking-duty-a'>Place a Room Service Order</a>
-                    </section>
-                    <section class='booking-screen-section'>
-                        <label class='manager-datepicker-label hidden'>Select Date</label>
-                        <input type="date" class='datepicker manager-date hidden' id='date-picker' required pattern="\d{4}-\d{2}-\d{2}">
-                        <div class='make-booking-div'>
-                            <section id="display-results-parent" class="manager-display-results-section"></section>
-                        </div>
-                    </section>
-                </div>
-            </section>
+            </div>
+        </section>
     </main>
 </body>
+
 </html>
