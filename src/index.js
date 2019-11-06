@@ -36,12 +36,12 @@ Promise.all([
   hotel = new Hotel(new Date(), data[0].users, data[1].rooms, data[2].bookings);
   hotel.getTodaysDate();
   setDatePicker();
-  if (document.location.pathname ===  "/customer.html") {
+  if (document.location.pathname ===  '/customer.html') {
     welcomeLoyalCustomer();
     generateBookingHistory(customer.findCustomerBookingHistory(hotel.bookings));
     generateSpendingHistory(customer.findCustomerBookingHistory(hotel.bookings), hotel.rooms);
     generateResults(hotel.findRoomsAvailableByDate());
-  } else if (document.location.pathname ===  "/manager.html") {
+  } else if (document.location.pathname ===  '/manager.html') {
     welcomeSupremeManagerFluffykins();
     displayKPIs();
     displayCustomers(hotel.users);
@@ -49,87 +49,43 @@ Promise.all([
 })
 
 // EVENT LISTENERS
-$('.submit-login-btn').on('click', function() {
+$('.submit-login-btn').on('click', logIn);
+$('.log-out-link').on('click', logOut)
+$('#filter-submit-btn').on('click', filterCustomerSearch)
+$('#manager-filter-submit-btn').on('click', filterManagerSearch);
+$('#display-results-parent').on('click', customerBook);
+$('.manager-display-results-section').on('click', managerBookDeleteHandler);
+$('#make-booking-link').on('click', makeManagerBookScreenAppear);
+$('#delete-booking-link').on('click', makeManagerDeleteScreenAppear);
+$('.customer-container-div').on('click', selectCustomer);
+$('.customer-container-div').on('keydown', selectCustomerAccessible);
+
+
+
+
+function logIn() {
   event.preventDefault();
   storeIDLocalStorage();
-  if ($('#username').val() === 'manager' && $('#password').val() === 'overlook2019') {
+  if ($('#username').val() === 'manager' 
+  && $('#password').val() === 'overlook2019') {
     $('body').css('background-image', 'none');
-    window.location = "./manager.html";
-  } else if ($('#username').val().includes('customer') && $('#password').val() === 'overlook2019') {
+    window.location = './manager.html';
+  } else if ($('#username').val().includes('customer') 
+  && $('#password').val() === 'overlook2019') {
     $('body').css('background-image', 'none');
-    window.location = "./customer.html";
-  } else if (($('#username').val() !== 'manager' || $('#password').val() === 'overlook2019') || !$('#username').val().includes('customer')) {
+    window.location = './customer.html';
+  } else if (($('#username').val() !== 'manager' 
+  || $('#password').val() === 'overlook2019') 
+  || !$('#username').val().includes('customer')) {
     $('#username').val('');
     $('#password').val('');
     alert('Invalid credentials submitted, please try again')
   }
-});
-
-$('.log-out-link').on('click', function() {
-  window.location = "./index.html";
-})
-
-$('#filter-submit-btn').on('click', function() {
-  event.preventDefault();
-  let date = grabDate();
-  let price = grabFilterMenuValues();
-  let features = grabFeatures();
-  generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
-})
-
-$('#manager-filter-submit-btn').on('click', function() {
-  event.preventDefault();
-  let date = grabDate();
-  let price = grabFilterMenuValues();
-  let features = grabFeatures();
-  generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
-  reassignBookButton();
-})
-
-$('#display-results-parent').on('click', function(event) {
-  if (event.target === $('#customer-book-btn')[0]) {
-    let date = grabDate();
-    let room = $(event.target.closest('.search-results-card'))[0].dataset.num
-    customer.bookARoom(date, room)
-  }
-})
-
-
-$('.manager-display-results-section').on('click', function(event) {
-  if (event.target === $('#customer-delete-btn')[0]) {
-    let id = event.target.closest('.delete-booking-card').dataset.num;
-    manager.deleteBooking(id);
-  } else if (event.target === $('#manager-book-btn')[0]) {
-    let date = grabDate();
-    let room = $(event.target.closest('.search-results-card'))[0].dataset.num
-    let id = parseInt($('.active').children()[1].innerText.split(' ')[1]);
-    manager.bookARoom(date, room, id)
-  }
-});
-
-$('#make-booking-link').on('click', function() {
-  $('.manager-filter-menu').removeClass('hidden')
-  generateResults(hotel.findRoomsAvailableByDate());
-  reassignBookButton();
-});
-
-$('#delete-booking-link').on('click', function() {
-  if (!$('.manager-filter-menu').hasClass('hidden')) {
-    $('.manager-filter-menu').addClass('hidden')
-  }
-  let id = parseInt($('.active').children()[1].innerText.split(' ')[1]);
-  displayDeleteBookings(id, hotel.rooms);
-});
-
-$('.customer-container-div').on('click', function(event) {
-  $(event.target).closest('.customer-card-div').siblings().removeClass('active');
-  $(event.target).closest('.customer-card-div').toggleClass('active');
-  $('#display-results-parent').html('');
-  let details = ($(event.target).closest('.customer-card-div').children());
-  let id = parseInt(details[1].innerText.split(' ')[1]);
-  let name = details[0].innerText;
-  displayCustomerBookingHistory(id, name);
-})
+}
+  
+function logOut() {
+  window.location = './index.html';
+}
 
 // Customer DOM Manipulation 
 function grabFilterMenuValues() {
@@ -151,8 +107,8 @@ function grabFeatures() {
   let searchQueryObj = {};
   let arr = [];
   let bidet = {};
-  if ($("input[type='checkbox']").prop('checked')) {
-    bidet = {bidet: $("input[type='checkbox']").prop('checked')};
+  if ($('input[type='checkbox']').prop('checked')) {
+    bidet = {bidet: $('input[type='checkbox']').prop('checked')};
   } 
   arr.push(bidet);
   let numBeds = {};
@@ -184,6 +140,13 @@ function setDatePicker() {
   $('#date-picker').val(hotel.date.split('/').join('-'));
 }
 
+function filterCustomerSearch() {
+  event.preventDefault();
+  let date = grabDate();
+  let price = grabFilterMenuValues();
+  let features = grabFeatures();
+  generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
+}
 
 function generateResults(arrayOfRooms) {
   $('#display-results-parent').html('');
@@ -191,9 +154,9 @@ function generateResults(arrayOfRooms) {
     let roomImg;
 
     if (obj.roomType === 'single room') {
-      roomImg = "./images/single-room-twin.jpg";
+      roomImg = './images/single-room-twin.jpg';
     } else if (obj.roomType === 'suite') {
-      roomImg = "./images/suite.jpg";
+      roomImg = './images/suite.jpg';
     } else if (obj.roomType === 'junior suite') {
       roomImg = './images/junior-suite.jpg';
     } else if (obj.roomType === 'residential suite') {
@@ -201,27 +164,27 @@ function generateResults(arrayOfRooms) {
     } 
 
     $('#display-results-parent').append(
-      `<div class="search-results-card" data-num='${obj.number}' tabindex='${index}'>
+      `<div class='search-results-card' data-num='${obj.number}' tabindex='${index}'>
         <div class='card-header-div'>
-          <h3 class="roomnum-card-h3">Room Num: ${obj.number}</h3>
-          <h3 class="roomtype-card-h3">Room Type: ${obj.roomType}</h3>
+          <h3 class='roomnum-card-h3'>Room Num: ${obj.number}</h3>
+          <h3 class='roomtype-card-h3'>Room Type: ${obj.roomType}</h3>
         </div>
-        <div class="room-image-div">
-        <img class="room-image-pic" src="${roomImg}">
+        <div class='room-image-div'>
+        <img class='room-image-pic' src='${roomImg}'>
         </div>
         <div class='details-card-div'>
         <ul class='details-ul'>
           <li class='details-li'>
-            <label class="details-label">Bed Type</label>
-            <p id="bedType-details-p" class='details-li-p'>${obj.bedSize}</p>
+            <label class='details-label'>Bed Type</label>
+            <p id='bedType-details-p' class='details-li-p'>${obj.bedSize}</p>
           </li>
           <li class='details-li'>
-            <label class="details-label">Number of Beds</label>
-            <p id="numBeds-details-p" class='details-li-p'>${obj.numBeds}</p>
+            <label class='details-label'>Number of Beds</label>
+            <p id='numBeds-details-p' class='details-li-p'>${obj.numBeds}</p>
           </li>
             <li class='details-li'>
-              <label class="details-label">Bidet</label>
-              <p id="bidet-details-p" class='details-li-p'>${obj.bidet}</p>
+              <label class='details-label'>Bidet</label>
+              <p id='bidet-details-p' class='details-li-p'>${obj.bidet}</p>
             </li>
         </ul>
         </div>
@@ -230,7 +193,7 @@ function generateResults(arrayOfRooms) {
           <p class='details-cost-per-night-p'>${obj.costPerNight}</p>
         </div>
         <div class='details-btn-div'>
-          <input type="submit" value='BOOK' id='customer-book-btn' class='book-btn'>
+          <input type='submit' value='BOOK' id='customer-book-btn' class='book-btn'>
         </div>
       </div>`
     );
@@ -279,6 +242,13 @@ function storeIDLocalStorage() {
   window.localStorage.setItem('id', customerID);
 }
 
+function customerBook(event) {
+  if (event.target === $('#customer-book-btn')[0]) {
+    let date = grabDate();
+    let room = $(event.target.closest('.search-results-card'))[0].dataset.num
+    customer.bookARoom(date, room)
+  }
+}
 
 // MANAGER DOM 
 
@@ -318,6 +288,28 @@ function displayCustomers(customers) {
   });
 }
 
+function selectCustomer(event) {
+  $(event.target).closest('.customer-card-div').siblings().removeClass('active');
+  $(event.target).closest('.customer-card-div').toggleClass('active');
+  $('#display-results-parent').html('');
+  let details = ($(event.target).closest('.customer-card-div').children());
+  let id = parseInt(details[1].innerText.split(' ')[1]);
+  let name = details[0].innerText;
+  displayCustomerBookingHistory(id, name);
+}
+
+function selectCustomerAccessible(event) {
+  if (event.which === 13) {
+    $(event.target).closest('.customer-card-div').siblings().removeClass('active');
+    $(event.target).closest('.customer-card-div').toggleClass('active');
+    $('#display-results-parent').html('');
+    let details = ($(event.target).closest('.customer-card-div').children());
+    let id = parseInt(details[1].innerText.split(' ')[1]);
+    let name = details[0].innerText;
+    displayCustomerBookingHistory(id, name);
+  }
+}
+
 function displayCustomerBookingHistory(id, name) {
   let bookings = manager.findCustomerBookingHistory(hotel.bookings, id).sort((a, b) => {
     if (b.date < a.date) {
@@ -351,10 +343,10 @@ function displayCustomerBookingHistory(id, name) {
 }
 
 function reassignBookButton() {
-  $('#customer-book-btn')[0].setAttribute('id', 'manager-book-btn')
+  $('#customer-book-btn')[0].setAttribute('id', 'manager-book-btn');
 }
 
-function displayDeleteBookings(id, rooms) {
+function displayDeleteBookings(id) {
   let bookings = manager.findCustomerBookingHistory(hotel.bookings, id).sort((a, b) => {
     if (b.date < a.date) {
       return -1
@@ -362,7 +354,6 @@ function displayDeleteBookings(id, rooms) {
       return 1
     }
   }).filter(booking => booking.date > hotel.date);
-
   appendDeletableBookings(bookings);
 }
 
@@ -370,15 +361,50 @@ function appendDeletableBookings(bookings) {
   $('#display-results-parent').html('');
   bookings.forEach(booking => {
     $('#display-results-parent').append(`
-    <div class="delete-booking-card" data-num='${booking.id}'>
+    <div class='delete-booking-card' data-num='${booking.id}'>
       <h3 class='booking-id-h3'>Booking Order #: ${booking.id}</h3>
       <div class='delete-booking-details-div'>
-        <h3 class=''>Date of Booking: ${booking.date}</h3>
-        <h3 class="">Room Num: ${booking.roomNumber}</h3>
+        <h3>Date of Booking: ${booking.date}</h3>
+        <h3>Room Num: ${booking.roomNumber}</h3>
       </div>
       <div class='details-btn-div'>
-        <input type="submit" value='DELETE' id='customer-delete-btn' class='book-btn'>
+        <input type='submit' value='DELETE' id='customer-delete-btn' class='book-btn'>
       </div>
     </div>`);
   });
+}
+
+function managerBookDeleteHandler(event) {
+  if (event.target === $('#customer-delete-btn')[0]) {
+    let id = event.target.closest('.delete-booking-card').dataset.num;
+    manager.deleteBooking(id);
+  } else if (event.target === $('#manager-book-btn')[0]) {
+    let date = grabDate();
+    let room = $(event.target.closest('.search-results-card'))[0].dataset.num
+    let id = parseInt($('.active').children()[1].innerText.split(' ')[1]);
+    manager.bookARoom(date, room, id)
+  }
+}
+
+function makeManagerBookScreenAppear() {
+  $('.manager-filter-menu').removeClass('hidden')
+  generateResults(hotel.findRoomsAvailableByDate());
+  reassignBookButton();
+}
+
+function filterManagerSearch() {
+  event.preventDefault();
+  let date = grabDate();
+  let price = grabFilterMenuValues();
+  let features = grabFeatures();
+  generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
+  reassignBookButton();
+}
+
+function makeManagerDeleteScreenAppear() {
+  if (!$('.manager-filter-menu').hasClass('hidden')) {
+    $('.manager-filter-menu').addClass('hidden')
+  }
+  let id = parseInt($('.active').children()[1].innerText.split(' ')[1]);
+  displayDeleteBookings(id);
 }

@@ -31,7 +31,6 @@ class User {
         roomNumber: parseInt(roomNumber)
       })
     })
-      .then(console.log('success'))
       .catch(error => console.log('error'))
   }
   addRoomServiceCharge() {

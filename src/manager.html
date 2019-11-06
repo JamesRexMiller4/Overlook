@@ -58,7 +58,7 @@
                         Service Order</a>
                 </section>
                 <section class='booking-screen-section'>
-                    <div class='manager-filter-menu hidden'>
+                    <div class='manager-filter-menu hidden' role='search'>
                         <ul class='manager-filter-menu'>
                             <li class='filter-li'>
                                 <label class='manager-datepicker-label'>Select Date</label>
@@ -74,7 +74,7 @@
                             </li>
                             <li class='filter-li'>
                                 <label for='roomtype'>Room Type</label>
-                                <select id='roomtype' class='select-roomtype-dropdown'>
+                                <select id='roomtype' class='select-roomtype-dropdown' aria-controls="room type">
                                     <option value=""></option>
                                     <option value="single room">Single Room</option>
                                     <option value="junior suite">Junior Suite</option>
@@ -84,7 +84,7 @@
                             </li>
                             <li class='filter-li'>
                                 <label for='beds'>Bed Size</label>
-                                <select id='beds' class='select-bed-dropdown'>
+                                <select id='beds' class='select-bed-dropdown' aria-controls="bed size">
                                     <option value=""></option>
                                     <option value="twin">Twin</option>
                                     <option value="full">Full</option>
@@ -112,7 +112,7 @@
                         </ul>
                     </div>
                     <div class='make-booking-div'>
-                        <section id="display-results-parent" class="manager-display-results-section"></section>
+                        <section id="display-results-parent" class="manager-display-results-section" aria-live="polite" role= 'status'></section>
                     </div>
                 </section>
             </div>

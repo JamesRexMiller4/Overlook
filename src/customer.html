@@ -22,7 +22,7 @@
     <h2 class='customer-greeting-message-h2'></h2>
     <section class='section-customer-main'>
       <section class="aside-filter-menu customer">
-        <form class='filter-menu-form'>
+        <form class='filter-menu-form' role='search'>
           <ul class="aside-menu-ul">
             <li class='filter-li'>
               <label for='date-picker'>Select Date</label>
@@ -37,7 +37,7 @@
             </li>
             <li class='filter-li'>
               <label for='roomtype'>Room Type</label>
-              <select id='roomtype' class='select-roomtype-dropdown'>
+              <select id='roomtype' class='select-roomtype-dropdown' aria-controls="room type">
                 <option value=""></option>
                 <option value="single room">Single Room</option>
                 <option value="junior suite">Junior Suite</option>
@@ -47,7 +47,7 @@
             </li>
             <li class='filter-li'>
               <label for='beds'>Bed Size</label>
-              <select id='beds' class='select-bed-dropdown'>
+              <select id='beds' class='select-bed-dropdown' aria-controls="bed size">
                 <option value=""></option>
                 <option value="twin">Twin</option>
                 <option value="full">Full</option>
@@ -71,11 +71,11 @@
           </ul>
         </form>
       </section>
-      <section id="display-results-parent" class="display-results-section"></section>
-      <section class="right-history-aside customer">
+      <section id="display-results-parent" class="display-results-section" aria-live="polite" role='status'></section>
+      <section class="right-history-aside customer" role='complementary'>
         <h2>Booking History</h2>
         <div class='customer-booking-history-div'>
-          <div id='booking-history-div' class='booking-history-results-div'></div>
+          <div id='booking-history-div' class='booking-history-results-div' aria-live="polite"></div>
         </div>
         <h2>Total Money Spent</h2>
         <div class='customer-spending-history-div'>
