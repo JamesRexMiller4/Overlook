@@ -77,24 +77,39 @@ $('#filter-submit-btn').on('click', function() {
   generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
 })
 
+$('#manager-filter-submit-btn').on('click', function() {
+  event.preventDefault();
+  let date = grabDate();
+  let price = grabFilterMenuValues();
+  let features = grabFeatures();
+  generateResults(hotel.filterRoomsByFeatures(features, hotel.filterRoomsByPrice(price, hotel.findRoomsAvailableByDate(date))));
+  reassignBookButton();
+})
+
 $('#display-results-parent').on('click', function(event) {
   if (event.target === $('#customer-book-btn')[0]) {
     let date = grabDate();
     let room = $(event.target.closest('.search-results-card'))[0].dataset.num
     customer.bookARoom(date, room)
   }
-});
+})
 
 
 $('.manager-display-results-section').on('click', function(event) {
   if (event.target === $('#customer-delete-btn')[0]) {
     let id = event.target.closest('.delete-booking-card').dataset.num;
     manager.deleteBooking(id);
+  } else if (event.target === $('#manager-book-btn')[0]) {
+    let date = grabDate();
+    let room = $(event.target.closest('.search-results-card'))[0].dataset.num
+    let id = parseInt($('.active').children()[1].innerText.split(' ')[1]);
+    manager.bookARoom(date, room, id)
   }
 });
 
 $('#make-booking-link').on('click', function() {
   generateResults(hotel.findRoomsAvailableByDate());
+  reassignBookButton();
 });
 
 $('#delete-booking-link').on('click', function() {
@@ -329,6 +344,10 @@ function displayCustomerBookingHistory(id, name) {
       </div>`
     )
   })
+}
+
+function reassignBookButton() {
+  $('#customer-book-btn')[0].setAttribute('id', 'manager-book-btn')
 }
 
 function displayDeleteBookings(id, rooms) {
