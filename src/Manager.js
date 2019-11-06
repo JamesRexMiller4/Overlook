@@ -27,6 +27,7 @@ class Manager extends User {
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({id: parseInt(id)})
     })
+      .catch(error => console.log('errrrrrr'))
   }
     
   

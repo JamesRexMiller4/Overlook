@@ -78,13 +78,15 @@ $('#filter-submit-btn').on('click', function() {
 })
 
 $('#display-results-parent').on('click', function(event) {
-  // let jQueryObj = $(event.target.closest('.search-results-card')
-  console.log($(event.target.closest('.search-results-card'))[0].dataset.num)
   if (event.target === $('#customer-book-btn')[0]) {
     let date = grabDate();
     let room = $(event.target.closest('.search-results-card'))[0].dataset.num
     customer.bookARoom(date, room)
   }
+});
+
+
+$('.manager-display-results-section').on('click', function(event) {
   if (event.target === $('#customer-delete-btn')[0]) {
     let id = event.target.closest('.delete-booking-card').dataset.num;
     manager.deleteBooking(id);
@@ -103,6 +105,7 @@ $('#delete-booking-link').on('click', function() {
 $('.customer-container-div').on('click', function(event) {
   $(event.target).closest('.customer-card-div').siblings().removeClass('active');
   $(event.target).closest('.customer-card-div').toggleClass('active');
+  $('#display-results-parent').html('');
   let details = ($(event.target).closest('.customer-card-div').children());
   let id = parseInt(details[1].innerText.split(' ')[1]);
   let name = details[0].innerText;
