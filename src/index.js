@@ -78,6 +78,13 @@ $('#filter-submit-btn').on('click', function() {
 })
 
 $('#display-results-parent').on('click', function(event) {
+  // let jQueryObj = $(event.target.closest('.search-results-card')
+  console.log($(event.target.closest('.search-results-card'))[0].dataset.num)
+  if (event.target === $('#customer-book-btn')[0]) {
+    let date = grabDate();
+    let room = $(event.target.closest('.search-results-card'))[0].dataset.num
+    customer.bookARoom(date, room)
+  }
   if (event.target === $('#customer-delete-btn')[0]) {
     let id = event.target.closest('.delete-booking-card').dataset.num;
     manager.deleteBooking(id);
@@ -172,7 +179,7 @@ function generateResults(arrayOfRooms) {
     } 
 
     $('#display-results-parent').append(
-      `<div class="search-results-card" data-num='${obj.number} tabindex='${index}'>
+      `<div class="search-results-card" data-num='${obj.number}' tabindex='${index}'>
         <div class='card-header-div'>
           <h3 class="roomnum-card-h3">Room Num: ${obj.number}</h3>
           <h3 class="roomtype-card-h3">Room Type: ${obj.roomType}</h3>
