@@ -108,11 +108,15 @@ $('.manager-display-results-section').on('click', function(event) {
 });
 
 $('#make-booking-link').on('click', function() {
+  $('.manager-filter-menu').removeClass('hidden')
   generateResults(hotel.findRoomsAvailableByDate());
   reassignBookButton();
 });
 
 $('#delete-booking-link').on('click', function() {
+  if (!$('.manager-filter-menu').hasClass('hidden')) {
+    $('.manager-filter-menu').addClass('hidden')
+  }
   let id = parseInt($('.active').children()[1].innerText.split(' ')[1]);
   displayDeleteBookings(id, hotel.rooms);
 });
