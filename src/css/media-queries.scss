@@ -1,0 +1,212 @@
+// Login Page
+
+@media (min-width: 405px) and (max-width: 615px) {
+
+    html {
+        width: 100%;
+    }
+
+    body {
+        width: inherit;
+    }
+
+    main {
+        width: inherit;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+
+    .hotel-logo {
+        width: 25px;
+        height: 25px;
+    }
+
+    .login-form {
+
+        width: 250px;
+        height: fit-content;
+    }
+
+}
+
+
+@media (min-width) and (max-width: 700px) {
+
+}
+
+@media (min-height: 700px) {
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: inherit;
+    }
+
+    .customer-main {
+        height: inherit;
+    }
+
+}
+
+
+// Customer Page
+
+@media (min-width: 900px) and (max-width: 1400px) {
+
+    .aside-filter-menu {
+        display: inline;
+    }
+
+}
+
+@media (min-width: 375px) and(max-width: 700px) {
+
+    .customer-greeting-message-h2 {
+        font-size: 2em;
+    }
+
+    .section-customer-main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .display-results-section {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .card-header-div {
+        width: 100%;
+        justify-content: left;
+    }
+
+    .details-label {
+        font-size: 1em;
+    }
+    .roomnum-card-h3, .roomtype-card-h3 {
+        font-size: 1em;
+    }
+    .room-image-pic {
+        width: 80px;
+        height: 80px;
+        border: 5px solid rgb(36, 114, 139);
+    }
+
+    .details-btn-div {
+        width: 20%;
+    }
+
+    .right-history-aside {
+        width: 100%;
+        height: 250px;
+    }
+
+    .details-ul {
+        width: 100%;
+    }
+}
+
+
+
+
+// Manager Page 
+
+@media (min-width: 580px) and (max-width: 900px) {
+
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 404px) {
+
+    header {
+        height: 12vh;
+    }
+
+    h1 {
+       font-size: 1em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    .hotel-logo {
+        width: 20px;
+        height: 20px;
+        margin-bottom: -5px;
+    }
+
+    .log-out-link {
+        font-size: 1em;
+    }
+
+    .manager-greeting-h2 {
+        font-size: 1.5em;
+    }
+
+    .manager-p {
+        font-size: 1.75em;
+    }
+
+    .manager-profile-pic {
+        margin: 0;
+    }
+
+    .todays-numbers-section {
+        width: 100%;
+        height: 121px;
+        display: flex;
+    }
+
+    .manager-duties-h2 {
+        font-size: 2em;
+        margin-left: -20px;
+    }
+
+
+    .customer-container-div {
+        width: 62%;
+    }
+
+    .customer-details-div {
+        width: 74%;
+        margin-left: -20px;
+    }
+
+    .customer-card-div {
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+    }
+
+
+    .booking-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .select-booking-duty-a {
+        font-size: 1.75em;
+    }
+
+
+    .make-booking-div {
+        width: 80%;
+        margin-left: -25px;
+    }
+}

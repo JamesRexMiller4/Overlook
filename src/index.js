@@ -107,8 +107,8 @@ function grabFeatures() {
   let searchQueryObj = {};
   let arr = [];
   let bidet = {};
-  if ($('input[type='checkbox']').prop('checked')) {
-    bidet = {bidet: $('input[type='checkbox']').prop('checked')};
+  if ($("input[type='checkbox']").prop('checked')) {
+    bidet = {bidet: $("input[type='checkbox']").prop('checked')};
   } 
   arr.push(bidet);
   let numBeds = {};
