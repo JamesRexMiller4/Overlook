@@ -16,7 +16,7 @@ describe('Hotel', () => {
 
   it('should be able to get the current date', () => {
     hotel.getTodaysDate()
-    expect(hotel.date).to.equal('2019/11/02')
+    expect(hotel.date).to.equal('2019/11/06')
   })
 
   it('should be able to find a current logged in user', () => {
