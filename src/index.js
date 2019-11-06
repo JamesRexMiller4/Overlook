@@ -79,12 +79,20 @@ function logIn() {
   || !$('#username').val().includes('customer')) {
     $('#username').val('');
     $('#password').val('');
-    alert('Invalid credentials submitted, please try again')
+    alertInvalidLogin()
+    // alert('Invalid credentials submitted, please try again')
   }
 }
   
 function logOut() {
   window.location = './index.html';
+}
+
+function alertInvalidLogin() {
+    $('.login-alert').fadeIn(1000)
+    setTimeout(function() {
+      $('.login-alert').fadeOut(3000)
+    }, 3000)
 }
 
 // Customer DOM Manipulation 
@@ -259,8 +267,8 @@ function customerBook(event) {
 function alertMessage() {
   $('.alert-message-card').fadeIn(1000)
   setTimeout(function() {
-    $('.alert-message-card').fadeOut(3000)
-  }, 3000)
+    $('.alert-message-card').fadeOut(1000)
+  }, 1000)
   $('#display-results-parent').html('');
 }
 

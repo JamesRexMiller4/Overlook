@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A booking hotel site for the Imperial Army's Deathstar; may the force be with you">
-  <meta http-equiv="X-UA-Compatible" content="ie-edge">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='description' content="A booking hotel site for the Imperial Army's Deathstar; may the force be with you">
+  <meta http-equiv='X-UA-Compatible' content='ie-edge'>
   <title>DEATHSTAR Hotel</title>
-  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Rajdhani:400,500,600,700&display=swap"
-    rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Julius+Sans+One|Rajdhani:400,500,600,700&display=swap'
+    rel='stylesheet'>
 </head>
 
 <body class='login-body'>
@@ -24,14 +24,17 @@
         <label for='username' class='login-label'>Username</label>
         <input id='username' class='input-username login' aria-placeholder='customer42' placeholder='customer42'
           autocomplete='off' aria-autocomplete='none'>
-        <p class="p-hint-login">Username must include your customer id</p>
+        <p class='p-hint-login'>Username must include your customer id</p>
         <label for='password' class='login-label'>Password</label>
         <input type='password' id='password' class='input-password login' placeholder='overlook2019'
           aria-placeholder='overlook2019' autocomplete='off' aria-autocomplete='none'>
-        <p class="p-hint-login">Passwords can contain letters and numbers only</p>
+        <p class='p-hint-login'>Passwords can contain letters and numbers only</p>
         <input type="submit" value='SUBMIT' class='submit-login-btn'>
       </form>
     </section>
+    <div class='alert-message-card login-alert'>
+        <h2 class='alert-apology'>Invalid credentials, please try again</h2>
+    </div>
   </main>
 </body>
 
