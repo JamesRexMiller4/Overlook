@@ -159,7 +159,6 @@ function filterCustomerSearch() {
 function generateResults(arrayOfRooms) {
 
   if (arrayOfRooms.length < 1) {
-    console.log('hello')
     alertMessage()
   } else {
     $('#display-results-parent').html('');
