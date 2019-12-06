@@ -7,11 +7,14 @@
     "start": "webpack-dev-server",
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/turingschool-examples/webpack-starter-kit.git"
+    "url": "git+https://https://github.com/JamesRexMiller4/Overlook.git",
+    "homepage": "http://JamesRexMiller4.github.io/Overlook"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",
@@ -24,7 +27,7 @@
     "html-webpack-plugin": "^3.2.0",
     "mocha": "^5.2.0",
     "mochapack": "^1.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.31.0",
