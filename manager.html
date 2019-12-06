@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A booking hotel site for the Imperial Army's Deathstar; may the force be with you">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Rajdhani:400,500,600,700&display=swap"
+        rel="stylesheet">
+    <title>DEATHSTAR Hotel</title>
+</head>
+
+<body class='manager-body'>
+    <header>
+        <h1>DEATHSTAR H<img src='./images/deathstar.gif'
+                alt='A gif of a yellow outline of the Deathstar that fades in and out, like a lighthouse in the lonely sea of space'
+                class='hotel-logo'>TEL</h1>
+        <a href='#' class='log-out-link'>Log Out</a>
+    </header>
+    <main class='manager-main'>
+        <div class='manager-header-div'>
+            <h2 class='manager-greeting-h2'>Hello Supreme Manager Fluffykins!</h2>
+            <img src='./images/fluffykins.jpg'
+                alt='A profile picture of the impetuous Fluffykins, an orange cat with no regard for customer service, only cold hard cash'
+                class='manager-profile-pic'>
+        </div>
+        <section class='todays-numbers-section'>
+            <div class='manager-kpi-div'>
+                <h2>Total Revenue</h2>
+                <p id='manager-revenue-p' class='manager-p'></p>
+            </div>
+            <div class='manager-kpi-div'>
+                <h2>Hotel Capacity</h2>
+                <p id='manager-capacity-p' class='manager-p'></p>
+            </div>
+            <div class='manager-kpi-div'>
+                <h2>Total Rooms Available</h2>
+                <p id='manager-total-open-rooms-p' class='manager-p'></p>
+            </div>
+        </section>
+        <section class='manager-duties-section'>
+            <section class='select-customers-section'>
+                <h2 class='manager-duties-h2'>Select Customer</h2>
+                <div class='customer-container-div'></div>
+            </section>
+            <section class='customer-details-section'>
+                <h2 class='manager-duties-h2'>Customer Details</h2>
+                <div class='customer-details-div'>
+                </div>
+            </section>
+            <div class='bookings-container-div'>
+                <section class='booking-section'>
+                    <a href='javascript:;' id='make-booking-link' class='select-booking-duty-a'>Make a Booking</a>
+                    <a href='javascript:;' id='delete-booking-link' class='select-booking-duty-a'>Delete a Booking</a>
+                    <a href='javascript:;' id='order-room-service-link' class='select-booking-duty-a'>Place a Room
+                        Service Order</a>
+                </section>
+                <section class='booking-screen-section'>
+                    <div class='manager-filter-menu hidden' role='search'>
+                        <ul class='manager-filter-menu'>
+                            <li class='filter-li'>
+                                <label class='manager-datepicker-label'>Select Date</label>
+                                <input type="date" class='datepicker manager-date' id='date-picker' required
+                                    pattern="\d{4}-\d{2}-\d{2}">
+                            </li>
+                            <li class='filter-li'>
+                                <label for='bidet'>Select Features</label>
+                                <div class='div-checkbox'>
+                                    <input type="checkbox" id="bidet" class="filter-checkbox" value="Bidet">
+                                    <label for='bidet' class='filter-label'>Bidet</label>
+                                </div>
+                            </li>
+                            <li class='filter-li'>
+                                <label for='roomtype'>Room Type</label>
+                                <select id='roomtype' class='select-roomtype-dropdown' aria-controls="room type">
+                                    <option value=""></option>
+                                    <option value="single room">Single Room</option>
+                                    <option value="junior suite">Junior Suite</option>
+                                    <option value="suite">Suite</option>
+                                    <option value="residential suite">Residential Suite</option>
+                                </select>
+                            </li>
+                            <li class='filter-li'>
+                                <label for='beds'>Bed Size</label>
+                                <select id='beds' class='select-bed-dropdown' aria-controls="bed size">
+                                    <option value=""></option>
+                                    <option value="twin">Twin</option>
+                                    <option value="full">Full</option>
+                                    <option value="queen">Queen</option>
+                                    <option value="king">King</option>
+                                </select>
+                            </li>
+                            <li class='filter-li'>
+                                <label for='num-beds'>Number of Beds</label>
+                                <input type="number" class="filter-input" id="num-beds" max="2" min='1' value=''
+                                    class='input-num-beds'>
+                            </li>
+                            <li class='filter-li'>
+                                <label for="min-price">Min Price</label>
+                                <input type="number" id="min-price" class='filter-input' min='100' max="500"
+                                    value="100">
+                                <label for='max-price'>Max Price</label>
+                                <input type="number" id='max-price' class='filter-input' min="100" max="500"
+                                    value="500">
+                            </li>
+                            <li class='filter-li'>
+                                <input type="submit" value="SUBMIT" id="manager-filter-submit-btn"
+                                    class='filter-input submit-btn manager-submit-btn'>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='make-booking-div'>
+                        <section id="display-results-parent" class="manager-display-results-section" aria-live="polite" role= 'status'></section>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+<script type="text/javascript" src="main.bundle.js"></script></body>
+
+</html>
