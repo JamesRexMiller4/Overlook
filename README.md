@@ -17,11 +17,24 @@ TDD
 SRP and Dry code
 
 
+## CUSTOMER PORTAL 
+
+![2020-01-05 10 43 56](https://user-images.githubusercontent.com/27719824/71783762-a5bf2480-2fa8-11ea-92dd-fa59e3b53cfe.gif)
+
+
+![2020-01-05 10 44 59](https://user-images.githubusercontent.com/27719824/71783792-ff275380-2fa8-11ea-87e3-08365b4725ec.gif)
+
 ## Want to see the working version? 
 
-Until I get the GH pages setup for this repo, feel free to clone down using git clone into a directory of your choosing. Then run npm install to load all the dependencies and run webpack's configuration file to get you up and running. Once that is finished installing, simply run the command npm start and a url link to a local live server is available for you to copy and paste into your browser
+Visit https://deathstar-hotel.herokuapp.com/index.html or feel free to clone down this repository
 
+Login Credentials: 
 
+UsernameL customer(1-50) - ex: customer42
+Password: overlook2019
+
+Username: manager
+Password: overlook2019
 
 ----
 
