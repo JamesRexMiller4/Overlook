@@ -89,10 +89,10 @@ function logOut() {
 }
 
 function alertInvalidLogin() {
-    $('.login-alert').fadeIn(1000)
-    setTimeout(function() {
-      $('.login-alert').fadeOut(3000)
-    }, 3000)
+  $('.login-alert').fadeIn(1000)
+  setTimeout(function() {
+    $('.login-alert').fadeOut(3000)
+  }, 3000)
 }
 
 // Customer DOM Manipulation 
