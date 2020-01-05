@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A booking hotel site for the Imperial Army's Deathstar; may the force be with you">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Rajdhani:400,500,600,700&display=swap"
+    rel="stylesheet">
+  <title>DEATHSTAR HOTEL</title>
+</head>
+
+<body id="customer-body">
+  <header>
+    <h1>DEATHSTAR H<img src='./images/deathstar.gif'
+        alt='A gif of a yellow outline of the Deathstar that fades in and out, like a lighthouse in the lonely sea of space'
+        class='hotel-logo'>TEL</h1>
+    <a href='#' class='log-out-link'>Log Out</a>
+  </header>
+  <main class='customer-main'>
+    <h2 class='customer-greeting-message-h2'></h2>
+    <section class='section-customer-main'>
+      <section class="aside-filter-menu customer">
+        <form class='filter-menu-form' role='search'>
+          <ul class="aside-menu-ul">
+            <li class='filter-li'>
+              <label for='date-picker'>Select Date</label>
+              <input type="date" class='filter-input datepicker' id='date-picker' required pattern="\d{4}-\d{2}-\d{2}">
+            </li>
+            <li class='filter-li'>
+              <label for='bidet'>Select Features</label>
+              <div class='div-checkbox'>
+                <input type="checkbox" id="bidet" class="filter-checkbox" value="Bidet">
+                <label for='bidet' class='filter-label'>Bidet</label>
+              </div>
+            </li>
+            <li class='filter-li'>
+              <label for='roomtype'>Room Type</label>
+              <select id='roomtype' class='select-roomtype-dropdown' aria-controls="room type">
+                <option value=""></option>
+                <option value="single room">Single Room</option>
+                <option value="junior suite">Junior Suite</option>
+                <option value="suite">Suite</option>
+                <option value="residential suite">Residential Suite</option>
+              </select>
+            </li>
+            <li class='filter-li'>
+              <label for='beds'>Bed Size</label>
+              <select id='beds' class='select-bed-dropdown' aria-controls="bed size">
+                <option value=""></option>
+                <option value="twin">Twin</option>
+                <option value="full">Full</option>
+                <option value="queen">Queen</option>
+                <option value="king">King</option>
+              </select>
+            </li>
+            <li class='filter-li'>
+              <label for='num-beds'>Number of Beds</label>
+              <input type="number" class="filter-input" id="num-beds" max="2" min='1' value='' class='input-num-beds'>
+            </li>
+            <li class='filter-li'>
+              <label for="min-price">Min Price</label>
+              <input type="number" id="min-price" class='filter-input' min='100' max="500" value="100">
+              <label for='max-price'>Max Price</label>
+              <input type="number" id='max-price' class='filter-input' min="100" max="500" value="500">
+            </li>
+            <li class='filter-li'>
+              <input type="submit" value="SUBMIT" id="filter-submit-btn" class='filter-input submit-btn'>
+            </li>
+          </ul>
+        </form>
+      </section>
+      <div class='alert-message-card'>
+        <h2 class='alert-apology'>So sorry, it appears that there are no available listings for that search query</h2>
+      </div>
+      <section id="display-results-parent" class="display-results-section" aria-live="polite" role='status'></section>
+      <section class="right-history-aside customer" role='complementary'>
+        <h2>Booking History</h2>
+        <div class='customer-booking-history-div'>
+          <div id='booking-history-div' class='booking-history-results-div' aria-live="polite"></div>
+        </div>
+        <h2>Total Money Spent</h2>
+        <div class='customer-spending-history-div'>
+          <p id="customer-spending-history-p" class='spending-total-p'></p>
+        </div>
+      </section>
+    </section>
+  </main>
+<script type="text/javascript" src="main.bundle.js"></script></body>
+
+</html>
