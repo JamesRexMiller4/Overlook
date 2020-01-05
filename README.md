@@ -1,3 +1,8 @@
+# Deathstar Hotel 
+<img width="1384" alt="Screen Shot 2020-01-05 at 10 54 25 AM" src="https://user-images.githubusercontent.com/27719824/71783837-c2a82780-2fa9-11ea-870d-9f16dab4ba17.png">
+
+
+
 # Overview 
 
 The Overlook solo project implements webpack, fetch api and network requests, Sass for css stylings, as well as build upon the 
@@ -17,11 +22,29 @@ TDD
 SRP and Dry code
 
 
+## CUSTOMER PORTAL 
+Upon logging in a customer will be presented with a dashboard that allows them to search available rooms by date, room type, and other amenities. On the far right side of the dashboard they are able to see their past bookings and total amount spent at the hotel. 
+
+Once they have found a room that they would like to book they can hit the book button, and the room will be added to their reservations.
+
+![2020-01-05 10 44 59](https://user-images.githubusercontent.com/27719824/71783792-ff275380-2fa8-11ea-87e3-08365b4725ec.gif)
+
+If in their search queries they are unable to find a listing that meets their search criteria, they will be prompted by an alert message that they need to refine their search. 
+
+![2020-01-05 10 43 56](https://user-images.githubusercontent.com/27719824/71783762-a5bf2480-2fa8-11ea-92dd-fa59e3b53cfe.gif)
+
+
 ## Want to see the working version? 
 
-Until I get the GH pages setup for this repo, feel free to clone down using git clone into a directory of your choosing. Then run npm install to load all the dependencies and run webpack's configuration file to get you up and running. Once that is finished installing, simply run the command npm start and a url link to a local live server is available for you to copy and paste into your browser
+Visit https://deathstar-hotel.herokuapp.com/index.html or feel free to clone down this repository
 
+Login Credentials: 
 
+UsernameL customer(1-50) - ex: customer42
+Password: overlook2019
+
+Username: manager
+Password: overlook2019
 
 ----
 
