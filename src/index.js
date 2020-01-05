@@ -374,7 +374,7 @@ function displayDeleteBookings(id) {
     } else if (b.date > a.date) {
       return 1
     }
-  }).filter(booking => booking.date > hotel.date);
+  }).filter(booking => new Date(booking.date) > new Date(hotel.date));
   appendDeletableBookings(bookings);
 }
 
