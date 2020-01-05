@@ -4,7 +4,8 @@
   "description": "Project starter kit using webpack, mocha, chai, and SCSS/SASS enabled",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p",
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'",
