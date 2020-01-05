@@ -11,7 +11,7 @@ fundamentals of OOP through the use of classical inheritance. In addition, the p
 The details of the project requirements was to design a hotel booking website that allowed either a customer or manager to log in, see all the rooms available for today, book a hotel room, and to be able to delete a booking (GET/POST/DELETE).
 
 
-Technologies Used:
+### Technologies Used:
 
 **Webpack**
 
@@ -19,7 +19,7 @@ Technologies Used:
 
 **Mocha and Chai testing library**
 
-Fundamentals Trained:
+### Fundamentals Trained:
 
 **OOP Inheritance**
 
@@ -69,10 +69,10 @@ Visit https://deathstar-hotel.herokuapp.com/index.html or feel free to clone dow
 
 Login Credentials: 
 
-UsernameL customer(1-50) - ex: customer42
-Password: overlook2019
+**Username: customer(1-50) - ex: customer42**
+**Password: overlook2019**
 
-Username: manager
-Password: overlook2019
+**Username: manager**
+**Password: overlook2019**
 
 ----
