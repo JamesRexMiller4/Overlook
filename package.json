@@ -40,6 +40,6 @@
     "@dogstudio/highway": "^2.1.3",
     "express": "^4.17.1",
     "gsap": "^2.1.3",
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   }
 }
